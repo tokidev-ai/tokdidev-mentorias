@@ -1,0 +1,20 @@
+---
+import technologies from "../data/technologies.json";
+---
+
+<div class="w-full backdrop-blur-md bg-white/3 border-y border-white/6 overflow-hidden py-6 my-12">
+  <div class="marquee-track flex items-center gap-14 whitespace-nowrap text-[#8c8f9e] text-sm font-mono tracking-wider">
+    {technologies.map((tech) => <span class="shrink-0">{tech}</span>)}
+    {technologies.map((tech) => <span class="shrink-0">{tech}</span>)}
+  </div>
+</div>
+
+<script>
+  import { animate } from "motion";
+
+  const track = document.querySelector(".marquee-track");
+
+  if (track) {
+    animate(track, { x: ["0%", "-50%"] }, { duration: 30, ease: "linear", repeat: Infinity });
+  }
+</script>

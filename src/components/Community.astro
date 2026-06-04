@@ -1,0 +1,28 @@
+---
+import CommunityCard from "./CommunityCard.astro";
+
+const items = [
+  {
+    title: "Acompanamiento practico",
+    description: "No es teoria suelta. Trabajamos sobre tu codigo, tu contexto y tus decisiones reales de producto.",
+    color: "#ef6c4a",
+  },
+  {
+    title: "Comunidad y criterio",
+    description: "Aprende a pensar como engineer: tradeoffs, comunicacion tecnica, ownership y ejecucion con foco.",
+    color: "#7b5ea7",
+  },
+];
+---
+
+<section id="community" class="py-20 flex justify-center">
+  <div class="w-full flex flex-col items-end">
+    <div class="w-full flex items-center justify-end gap-2 mb-10" data-section-label>
+      <div class="h-px w-10 bg-linear-to-r from-brand-orange to-transparent"></div>
+      <span class="font-mono font-medium text-[#ff8a5c] text-sm tracking-[2.88px] uppercase">ACOMPANAMIENTO</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+      {items.map((item) => <CommunityCard {...item} />)}
+    </div>
+  </div>
+</section>

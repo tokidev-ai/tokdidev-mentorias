@@ -1,0 +1,25 @@
+---
+import { Calendar } from "lucide-astro";
+---
+
+<section id="contact" class="relative w-full max-w-5xl mx-auto rounded-3xl border border-[rgba(164,6,233,0.12)] overflow-hidden flex flex-col items-center justify-center p-8 lg:p-16" style="background-image: linear-gradient(152.4deg, rgb(15, 15, 18) 0%, rgb(26, 18, 48) 38.89%, rgb(42, 14, 85) 70.71%)">
+  <div class="flex flex-col items-center text-center gap-8 z-10 w-full max-w-3xl">
+    <div class="font-bold text-3xl md:text-5xl leading-tight text-white">
+      <h2 class="mb-2">Listo para ordenar tu siguiente paso?</h2>
+      <p class="bg-clip-text bg-linear-to-r from-[#f53955] to-[#fa743f] text-transparent">Agenda una mentoría.</p>
+    </div>
+
+    <p class="text-[#c6cad0] text-base md:text-lg leading-relaxed max-w-2xl">
+      Revisamos tu punto actual, tus bloqueos y el camino mas corto para mejorar como developer sin perder meses estudiando al azar.
+    </p>
+
+    <div class="w-full max-w-2xl flex flex-col gap-4 items-center">
+      <a href="mailto:rodrigo.torricodelcastillo@gmail.com?subject=Quiero%20agendar%20una%20mentoria%20Tokidev" class="w-full bg-linear-to-r from-[#f53955] to-[#fa743f] flex h-14 items-center justify-center gap-3 px-8 rounded-full shadow-[0px_12px_28px_-4px_rgba(245,57,85,0.35)] text-white text-base font-semibold hover:scale-[1.02] transition-transform">
+        <Calendar size={18} />
+        Agendar una llamada
+        <span class="ml-1">→</span>
+      </a>
+      <p class="text-[#8c8f9e] text-sm">Respondo en menos de 24h. Sin compromiso, solo conversamos.</p>
+    </div>
+  </div>
+</section>

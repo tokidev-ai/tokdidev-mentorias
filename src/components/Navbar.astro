@@ -1,0 +1,104 @@
+---
+import { ArrowRight, Menu, X } from "lucide-astro";
+
+const links = [
+  { label: "Mentoria", href: "/#about", target: "about" },
+  { label: "Areas", href: "/#capabilities", target: "capabilities" },
+  { label: "Programa", href: "/#program", target: "program" },
+  { label: "Resultados", href: "/#testimonials", target: "testimonials" },
+  { label: "Trayectoria", href: "/#experience", target: "experience" },
+];
+---
+
+<nav class="fixed top-5 lg:top-8 left-1/2 -translate-x-1/2 w-[92%] max-w-[1120px] h-14 lg:h-16 bg-brand-glass/65 backdrop-blur-xl border border-brand-border rounded-2xl px-5 lg:px-6 flex items-center justify-between z-50 transition-all duration-300">
+  <a href="/" class="flex items-center gap-2.5 group transition-opacity hover:opacity-90">
+    <div class="w-8 h-8 rounded-lg bg-linear-to-br from-brand-orange to-brand-yellow flex items-center justify-center">
+      <span class="text-white font-bold text-lg leading-none">T</span>
+    </div>
+    <span class="text-brand-text font-bold text-lg tracking-tight">tokidev mentorias</span>
+  </a>
+
+  <div class="hidden lg:flex items-center gap-1">
+    {links.map((link) => (
+      <a href={link.href} class="nav-link relative flex items-center gap-2 px-4 py-1.5 text-[13px] font-medium text-brand-text/50 hover:text-white transition-colors rounded-lg" data-target={link.target}>
+        <span class="nav-dot w-1.5 h-1.5 rounded-full bg-brand-orange hidden"></span>
+        <span>{link.label}</span>
+      </a>
+    ))}
+  </div>
+
+  <div class="hidden lg:flex items-center">
+    <a href="#contact" class="flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-brand-orange to-brand-yellow rounded-full text-[13px] font-semibold text-white hover:opacity-90 transition-opacity">
+      Agendar llamada
+      <ArrowRight size={14} />
+    </a>
+  </div>
+
+  <button id="menu-toggle" class="lg:hidden text-brand-text/70 focus:outline-none transition-colors hover:text-brand-orange" aria-label="Abrir menu">
+    <Menu size={24} id="menu-icon" />
+    <X size={24} id="close-icon" class="hidden" />
+  </button>
+</nav>
+
+<div id="mobile-menu" class="fixed inset-0 bg-brand-bg/95 backdrop-blur-2xl z-45 hidden lg:hidden">
+  <div class="flex flex-col items-center justify-center w-full h-full gap-8">
+    <div class="flex flex-col items-center gap-6">
+      {links.map((link) => (
+        <a href={link.href} class="mobile-nav-link relative flex items-center gap-2.5 text-[24px] font-bold text-brand-text/60 hover:text-white transition-colors" data-target={link.target}>
+          <span class="nav-dot w-2 h-2 rounded-full bg-brand-orange hidden"></span>
+          <span>{link.label}</span>
+        </a>
+      ))}
+      <a href="#contact" class="mobile-link mt-4 flex items-center gap-2 px-8 py-4 bg-linear-to-r from-brand-orange to-brand-yellow rounded-full text-[16px] font-bold text-white">
+        Agendar llamada
+        <ArrowRight size={18} />
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+  const mobileLinks = document.querySelectorAll(".mobile-link, .mobile-nav-link");
+  const allNavLinks = document.querySelectorAll(".nav-link, .mobile-nav-link");
+
+  function toggleMenu() {
+    mobileMenu?.classList.toggle("hidden");
+    menuIcon?.classList.toggle("hidden");
+    closeIcon?.classList.toggle("hidden");
+    document.body.classList.toggle("overflow-hidden");
+  }
+
+  function setActiveLink(targetId: string) {
+    allNavLinks.forEach((link) => {
+      const isMobile = link.classList.contains("mobile-nav-link");
+      const dot = link.querySelector(".nav-dot");
+      link.classList.remove("text-white");
+      link.classList.add(isMobile ? "text-brand-text/60" : "text-brand-text/50");
+      dot?.classList.add("hidden");
+
+      if (link.getAttribute("data-target") === targetId) {
+        link.classList.remove("text-brand-text/50", "text-brand-text/60");
+        link.classList.add("text-white");
+        dot?.classList.remove("hidden");
+      }
+    });
+  }
+
+  menuToggle?.addEventListener("click", toggleMenu);
+  mobileLinks.forEach((link) => link.addEventListener("click", () => !mobileMenu?.classList.contains("hidden") && toggleMenu()));
+
+  const sections = document.querySelectorAll("section[id]");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => entry.isIntersecting && setActiveLink(entry.target.id));
+      if (window.scrollY < 100) setActiveLink("about");
+    },
+    { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
+  );
+
+  sections.forEach((sec) => observer.observe(sec));
+</script>

@@ -1,0 +1,43 @@
+---
+import BackgroundGlows from "../components/BackgroundGlows.astro";
+import Capabilities from "../components/Capabilities.astro";
+import Community from "../components/Community.astro";
+import CTA from "../components/CTA.astro";
+import Experience from "../components/Experience.astro";
+import FeaturedProgram from "../components/FeaturedProgram.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/Hero.astro";
+import Navbar from "../components/Navbar.astro";
+import TechMarquee from "../components/TechMarquee.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Tokidev Mentorías | Software, carrera y criterio técnico"
+  description="Mentorías técnicas 1:1 para developers que quieren mejorar su código, arquitectura, carrera y forma de construir productos reales."
+>
+  <BackgroundGlows slot="background" />
+
+  <div class="relative w-full mx-auto min-h-screen overflow-x-hidden">
+    <Navbar />
+
+    <main class="w-full relative z-10">
+      <div class="w-[92%] max-w-[1120px] mx-auto">
+        <Hero />
+      </div>
+
+      <TechMarquee />
+
+      <div class="w-[92%] max-w-[1120px] mx-auto flex flex-col items-center">
+        <Capabilities />
+        <FeaturedProgram />
+        <Community />
+        <Testimonials />
+        <Experience />
+        <CTA />
+        <Footer />
+      </div>
+    </main>
+  </div>
+</Layout>

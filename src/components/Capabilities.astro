@@ -1,0 +1,67 @@
+---
+import { Bot, Brain, Code, GraduationCap, Smartphone } from "lucide-astro";
+
+const smallCapabilities = [
+  { icon: Brain, title: "Criterio senior", desc: "Decisiones tecnicas con contexto", bgColor: "rgba(255,201,60,0.18)", borderColor: "rgba(255,201,60,0.3)" },
+  { icon: Smartphone, title: "Frontend real", desc: "UI, performance y producto", bgColor: "rgba(196,168,255,0.18)", borderColor: "rgba(196,168,255,0.3)" },
+  { icon: Bot, title: "AI workflows", desc: "Cursor, agentes y automatizacion", bgColor: "rgba(155,111,255,0.18)", borderColor: "rgba(155,111,255,0.3)" },
+  { icon: GraduationCap, title: "Carrera", desc: "Roadmap, entrevistas y foco", bgColor: "rgba(255,138,92,0.18)", borderColor: "rgba(255,138,92,0.3)" },
+];
+
+const stats = [
+  { value: "1:1", label: "Mentoria personalizada" },
+  { value: "4+", label: "Semanas de avance" },
+  { value: "10+", label: "Años construyendo software" },
+  { value: "∞", label: "Feedback accionable", special: true },
+];
+---
+
+<section id="capabilities" class="py-20 w-full flex flex-col items-center">
+  <div class="w-full flex flex-col gap-2 items-start mb-12">
+    <div class="flex gap-2 items-center" data-section-label>
+      <div class="bg-linear-to-r from-brand-orange to-transparent h-px w-10"></div>
+      <p class="font-mono font-medium text-[#ff8a5c] text-sm tracking-[2.88px] uppercase">EN QUE TE AYUDO</p>
+    </div>
+    <h2 class="font-semibold text-3xl md:text-[32px] text-white">Mentoria para subir de nivel con direccion</h2>
+  </div>
+
+  <div class="w-full flex flex-col lg:flex-row gap-6 items-stretch mb-6">
+    <div class="reveal-card interactive-card backdrop-blur-md bg-white/4 border border-white/8 relative rounded-3xl p-6 lg:p-8 flex flex-col justify-between min-h-[280px] lg:w-[448px] shrink-0 transition-all duration-300 hover:border-[#ff6b35]/30 hover:bg-[linear-gradient(146.5deg,rgba(255,107,53,0.18)_0%,rgba(155,111,255,0.1)_100%)] group">
+      <div class="bg-[#ff6b35]/20 border border-[#ff6b35]/35 flex items-center justify-center rounded-xl size-12">
+        <Code size={22} class="text-[#ff6b35]" />
+      </div>
+      <div>
+        <h3 class="font-semibold text-xl lg:text-2xl text-white mb-2">Codigo limpio, decisiones claras</h3>
+        <p class="text-white/65 text-sm leading-relaxed">
+          Revisamos tu codigo, arquitectura y forma de pensar problemas para convertir dudas vagas en acciones concretas.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1">
+      {smallCapabilities.map((cap) => (
+        <div class="reveal-card interactive-card backdrop-blur-md bg-white/4 border border-white/8 relative rounded-2xl p-5 flex flex-col justify-between min-h-[140px] transition-all duration-300 hover:border-[#ff6b35]/30 hover:bg-[linear-gradient(146.5deg,rgba(255,107,53,0.18)_0%,rgba(155,111,255,0.1)_100%)] group">
+          <div class="flex items-center justify-center rounded-lg size-10" style={`background-color: ${cap.bgColor}; border: 1px solid ${cap.borderColor};`}>
+            <cap.icon size={20} class="text-white/80" />
+          </div>
+          <div>
+            <h4 class="font-semibold text-base text-white mb-1 group-hover:text-brand-orange transition-colors">{cap.title}</h4>
+            <p class="text-white/55 text-xs">{cap.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="reveal-card backdrop-blur-md bg-white/4 border border-white/8 relative rounded-2xl w-full py-4 lg:py-6 flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-0">
+    {stats.map((stat, index) => (
+      <>
+        <div class="flex flex-col items-center justify-center flex-1">
+          <p class={`font-bold text-3xl mb-1 ${stat.special ? "text-[#9b6fff]" : "text-[#ff6b35]"}`}>{stat.value}</p>
+          <p class="text-white/60 text-xs text-center">{stat.label}</p>
+        </div>
+        {index < stats.length - 1 && <div class="hidden sm:block bg-white/10 h-12 w-px"></div>}
+      </>
+    ))}
+  </div>
+</section>

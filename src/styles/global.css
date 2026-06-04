@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-orange: #f53955;
+  --color-brand-yellow: #fa743f;
+  --color-brand-purple: #a406e9;
+  --color-cool-red: #f53955;
+  --color-cool-orange: #fa743f;
+  --color-aero-pink: #da2984;
+  --color-good-purple: #a406e9;
+  --color-dark-purple: #131139;
+  --color-brand-bg: #0a111a;
+  --color-brand-glass: rgba(26, 16, 41, 0.6);
+  --color-brand-border: rgba(123, 94, 167, 0.15);
+  --color-brand-text: #f0eef2;
+  --color-brand-text-dim: rgba(240, 238, 242, 0.5);
+  --font-inter: "Inter", sans-serif;
+  --background-image-hero-title: linear-gradient(180deg, #fff 0%, #fff 50%, #a406e9 70.673%, #da2984 85%, #fa743f 100%);
+  --background-image-hero-card: linear-gradient(107.6deg, rgba(255, 255, 255, 0.36) 1.2%, rgba(196, 196, 196, 0.06) 100%);
+  --spacing-social-size: 54px;
+  --spacing-btn-px: 52px;
+  --spacing-btn-py: 18px;
+}
+
+@layer base {
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-brand-bg text-brand-text font-inter antialiased;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d2550;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d3560;
+}
