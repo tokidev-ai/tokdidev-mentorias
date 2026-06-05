@@ -7,7 +7,7 @@ import { ArrowRight, Sparkles } from "lucide-astro";
   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] lg:w-[700px] h-[300px] sm:h-[400px] bg-brand-orange/15 blur-[100px] sm:blur-[140px] rounded-full pointer-events-none z-0 animate-pulse" style="animation-duration: 5s;"></div>
   <div class="absolute top-[45%] left-[45%] -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[450px] lg:w-[600px] h-[280px] sm:h-[400px] bg-brand-purple/10 blur-[110px] sm:blur-[130px] rounded-full pointer-events-none z-0 animate-pulse" style="animation-duration: 8s; animation-delay: 1.5s;"></div>
 
-  <div class="flex flex-col items-center text-center gap-6 lg:gap-8 z-10 w-full max-w-4xl mx-auto px-4 relative">
+  <div class="flex flex-col items-center text-center gap-6 lg:gap-8 z-10 w-full max-w-5xl mx-auto px-4 relative">
     {/* Badge Animado */}
     <div data-hero="badge" class="px-4 py-2 bg-brand-orange/10 backdrop-blur-md border border-brand-orange/25 rounded-full overflow-hidden inline-block animate-pulse">
       <span class="text-xs font-bold text-brand-orange uppercase tracking-[1.65px] flex items-center gap-2">
@@ -15,16 +15,16 @@ import { ArrowRight, Sparkles } from "lucide-astro";
       </span>
     </div>
 
-    {/* Titular Impactante con Gradiente Animado (Text Shine) */}
-    <h1 data-hero="title" class="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] xl:text-[62px] font-extrabold leading-[1.15] lg:leading-[1.1] tracking-[-1.2px] lg:tracking-[-2px] text-white">
-      ¿Tu código se quedó atrás o no sabes cómo <br />
-      <span class="bg-linear-to-r from-brand-orange via-brand-yellow to-brand-purple bg-clip-text text-transparent animate-text-shine">integrar IA</span> en tu producto? Resuelve tus dudas.
+    {/* Titular con Rotación Dinámica de Texto */}
+    <h1 data-hero="title" class="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] font-extrabold leading-[1.2] lg:leading-[1.15] tracking-[-1.2px] lg:tracking-[-2px] text-white">
+      Resuelve bloqueos técnicos y escala con <br class="hidden md:block" />
+      mentorías 1-a-1 para <span id="dynamic-text" class="inline-block bg-linear-to-r from-brand-orange via-brand-yellow to-brand-purple bg-clip-text text-transparent animate-text-shine">startups AI-First</span>
     </h1>
 
     {/* Subtitular */}
-    <div data-hero="desc" class="text-[#c6cad0] text-sm sm:text-base lg:text-lg leading-[1.6] max-w-[700px]">
+    <div data-hero="desc" class="text-[#c6cad0] text-sm sm:text-base lg:text-lg leading-[1.6] max-w-[800px]">
       <p>
-        Mentorías 1-a-1 y consultoría arquitectónica con un Senior Developer. El empujón que tu carrera o tu startup necesitan para escalar.
+        Consultoría arquitectónica, refactorización y estrategia de IA sin fricción. Experiencia práctica aplicada directamente a tus desafíos de desarrollo.
       </p>
     </div>
 
@@ -41,3 +41,41 @@ import { ArrowRight, Sparkles } from "lucide-astro";
     </div>
   </div>
 </section>
+
+<script>
+  const phrases = [
+    "startups AI-First",
+    "developers junior",
+    "proyectos Angular/Node"
+  ];
+  let currentIndex = 0;
+  const dynamicTextEl = document.getElementById("dynamic-text");
+
+  if (dynamicTextEl) {
+    setInterval(async () => {
+      // 1. Animación de salida: desvanecer y desplazar hacia arriba
+      const fadeOut = dynamicTextEl.animate(
+        [
+          { opacity: 1, transform: "translateY(0px)" },
+          { opacity: 0, transform: "translateY(-8px)" }
+        ],
+        { duration: 250, easing: "ease-in", fill: "forwards" }
+      );
+
+      await fadeOut.finished;
+
+      // 2. Cambiar frase
+      currentIndex = (currentIndex + 1) % phrases.length;
+      dynamicTextEl.textContent = phrases[currentIndex];
+
+      // 3. Animación de entrada: desvanecer en sentido contrario y deslizar desde abajo
+      dynamicTextEl.animate(
+        [
+          { opacity: 0, transform: "translateY(8px)" },
+          { opacity: 1, transform: "translateY(0px)" }
+        ],
+        { duration: 300, easing: "ease-out", fill: "forwards" }
+      );
+    }, 3200); // Intervalo de cambio de frase (3.2s)
+  }
+</script>
