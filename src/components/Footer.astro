@@ -9,37 +9,29 @@ const socialLinks = [
 ];
 ---
 
-<footer class="py-12 md:py-16 flex justify-center border-t border-brand-border/10">
-  <div class="w-full flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-lg bg-linear-to-br from-brand-orange to-brand-yellow/80 flex items-center justify-center">
-        <span class="text-white font-bold text-lg leading-none pt-0.5">t</span>
-      </div>
-      <div class="flex flex-col">
-        <span class="text-[16px] font-bold text-brand-text/90 leading-tight tracking-tight">Tokidev Mentorías</span>
-        <span class="text-[11px] font-medium text-brand-text/30 uppercase tracking-tighter">Software, carrera y criterio tecnico</span>
-      </div>
+<footer class="w-full py-10 mt-12 border-t border-brand-border/10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
+  {/* Información de marca */}
+  <div class="flex items-center gap-3">
+    <div class="w-8 h-8 rounded-lg bg-linear-to-br from-brand-orange to-brand-yellow flex items-center justify-center">
+      <span class="text-white font-bold text-lg leading-none">t</span>
     </div>
-
-    <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 md:hidden">
-      {[
-        ["Mentoria", "#about"],
-        ["Areas", "#capabilities"],
-        ["Programa", "#program"],
-        ["Resultados", "#testimonials"],
-      ].map(([label, href]) => (
-        <a href={href} class="text-[13px] font-medium text-brand-text/40 hover:text-brand-orange transition-colors">{label}</a>
-      ))}
+    <div class="flex flex-col text-left">
+      <span class="text-sm font-bold text-brand-text/90 leading-tight tracking-tight">Tokidev Mentorías</span>
+      <span class="text-[10px] font-medium text-brand-text/30 uppercase tracking-wider">Software, carrera y criterio técnico</span>
     </div>
+  </div>
 
-    <div class="flex gap-4">
-      {socialLinks.map((social) => (
-        <a href={social.href} aria-label={social.label} class="w-10 h-10 md:w-9 md:h-9 flex items-center justify-center rounded-xl bg-[#2d2550]/40 border border-brand-border/12 text-brand-orange/70 hover:text-brand-orange hover:bg-[#2d2550]/60 transition-all border-solid">
-          <social.icon size={18} />
-        </a>
-      ))}
-    </div>
+  {/* Redes Sociales */}
+  <div class="flex gap-3">
+    {socialLinks.map((social) => (
+      <a href={social.href} aria-label={social.label} target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center rounded-xl bg-[#2d2550]/40 border border-brand-border/12 text-brand-orange/70 hover:text-brand-orange hover:bg-[#2d2550]/60 transition-all border-solid">
+        <social.icon size={16} />
+      </a>
+    ))}
+  </div>
 
-    <div class="md:hidden text-[11px] text-brand-text/20 font-medium">© {new Date().getFullYear()} Tokidev. All rights reserved.</div>
+  {/* Copyright */}
+  <div class="text-[11px] text-brand-text/25 font-mono">
+    © {new Date().getFullYear()} Tokidev. All rights reserved.
   </div>
 </footer>

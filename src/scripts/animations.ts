@@ -5,7 +5,7 @@ const EASE_SOFT = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 function revealOnScroll(
   elements: NodeListOf<HTMLElement> | HTMLElement[],
-  { y = 32, delay = 0, stagger = 0.09, duration = 0.7 } = {},
+  { y = 20, delay = 0, stagger = 0.05, duration = 0.45 } = {},
 ) {
   const els = Array.from(elements);
   if (!els.length) return;
@@ -41,7 +41,7 @@ function initHero() {
 
   targets.forEach((el) => {
     el.style.opacity = "0";
-    el.style.transform = "translateY(28px)";
+    el.style.transform = "translateY(20px)";
   });
 
   targets.forEach((el, i) => {
@@ -55,7 +55,7 @@ function initHero() {
             ? ["translateX(40px) translateY(0px)", "translateX(0px) translateY(0px)"]
             : "translateY(0px)",
       },
-      { duration: 0.75, delay: 0.08 + i * 0.12, easing: EASE_OUT },
+      { duration: 0.5, delay: 0.05 + i * 0.08, easing: EASE_OUT },
     );
   });
 }
@@ -73,9 +73,9 @@ function initNavbar() {
 }
 
 function initSectionReveals() {
-  revealOnScroll(document.querySelectorAll<HTMLElement>("section [data-section-label], section h2"), { y: 24 });
-  revealOnScroll(document.querySelectorAll<HTMLElement>(".reveal-card"), { y: 44, delay: 0.1, stagger: 0.1 });
-  revealOnScroll(document.querySelectorAll<HTMLElement>("#contact h2, #contact p, #contact a"), { y: 30, stagger: 0.08 });
+  revealOnScroll(document.querySelectorAll<HTMLElement>("section [data-section-label], section h2"), { y: 16, duration: 0.4, stagger: 0.04 });
+  revealOnScroll(document.querySelectorAll<HTMLElement>(".reveal-card"), { y: 20, delay: 0.05, stagger: 0.06, duration: 0.45 });
+  revealOnScroll(document.querySelectorAll<HTMLElement>("#contact h2, #contact p, #contact a"), { y: 20, duration: 0.4, stagger: 0.05 });
 }
 
 function initCardHovers() {
@@ -102,7 +102,7 @@ function initOrbParallax() {
   if (window.innerWidth < 768) return;
 
   const orbs = document.querySelectorAll<HTMLElement>(
-    '[class*="bg-brand-orange"][class*="blur-["], [class*="bg-brand-purple"][class*="blur-["]',
+    '[class*="bg-brand-orange"][class*="blur-["], [class*="bg-brand-purple"][class*="blur-["], [class*="bg-brand-yellow"][class*="blur-["]',
   );
 
   scroll((progress) => {

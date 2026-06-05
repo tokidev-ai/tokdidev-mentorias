@@ -2,11 +2,10 @@
 import { ArrowRight, Menu, X } from "lucide-astro";
 
 const links = [
-  { label: "Mentoria", href: "/#about", target: "about" },
-  { label: "Areas", href: "/#capabilities", target: "capabilities" },
-  { label: "Programa", href: "/#program", target: "program" },
-  { label: "Resultados", href: "/#testimonials", target: "testimonials" },
-  { label: "Trayectoria", href: "/#experience", target: "experience" },
+  { label: "Cómo trabajamos", href: "/#workflow", target: "workflow" },
+  { label: "Particulares", href: "/#personal", target: "personal" },
+  { label: "Empresas", href: "/#business", target: "business" },
+  { label: "FAQ", href: "/#faq", target: "faq" },
 ];
 ---
 
@@ -28,8 +27,8 @@ const links = [
   </div>
 
   <div class="hidden lg:flex items-center">
-    <a href="#contact" class="flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-brand-orange to-brand-yellow rounded-full text-[13px] font-semibold text-white hover:opacity-90 transition-opacity">
-      Agendar llamada
+    <a href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-brand-orange to-brand-yellow rounded-full text-[13px] font-semibold text-white hover:opacity-90 transition-opacity">
+      Sesión Gratuita
       <ArrowRight size={14} />
     </a>
   </div>
@@ -49,8 +48,8 @@ const links = [
           <span>{link.label}</span>
         </a>
       ))}
-      <a href="#contact" class="mobile-link mt-4 flex items-center gap-2 px-8 py-4 bg-linear-to-r from-brand-orange to-brand-yellow rounded-full text-[16px] font-bold text-white">
-        Agendar llamada
+      <a href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" class="mobile-link mt-4 flex items-center gap-2 px-8 py-4 bg-linear-to-r from-brand-orange to-brand-yellow rounded-full text-[16px] font-bold text-white">
+        Sesión Gratuita
         <ArrowRight size={18} />
       </a>
     </div>
@@ -95,7 +94,7 @@ const links = [
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => entry.isIntersecting && setActiveLink(entry.target.id));
-      if (window.scrollY < 100) setActiveLink("about");
+      if (window.scrollY < 100) setActiveLink("hero");
     },
     { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
   );

@@ -1,0 +1,100 @@
+---
+import { ArrowUpRight, Award, CheckCircle2, Clock } from "lucide-astro";
+---
+
+<section id="personal" class="py-20 w-full flex flex-col items-center">
+  {/* Fila de Introducción */}
+  <div class="w-full flex flex-col lg:flex-row gap-6 lg:gap-12 items-start lg:items-end justify-between mb-16">
+    <div class="flex-1 space-y-3">
+      <div class="flex gap-2 items-center" data-section-label>
+        <div class="bg-linear-to-r from-brand-orange to-transparent h-px w-10"></div>
+        <p class="font-mono font-medium text-[#ff8a5c] text-sm tracking-[2.88px] uppercase">PARTICULARES</p>
+      </div>
+      <h2 class="font-bold text-3xl md:text-4xl text-white">Destraba tu carrera técnica hoy mismo</h2>
+    </div>
+    <div class="flex-1 max-w-[500px]">
+      <p class="text-white/60 text-sm sm:text-base leading-relaxed">
+        El salto de la universidad o del autoaprendizaje al mercado real es difícil. Deja de acumular tutoriales y empieza a recibir feedback directo de un Senior Developer.
+      </p>
+    </div>
+  </div>
+
+  {/* Fila de Contenedores (2 Cards Grandes Lado a Lado) */}
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full items-stretch">
+    
+    {/* Card A: Sesión de Claridad */}
+    <div class="reveal-card interactive-card relative rounded-[32px] border border-brand-orange/20 overflow-hidden flex flex-col justify-between p-8 sm:p-10 min-h-[380px] group transition-all duration-500 hover:scale-[1.01] hover:border-brand-orange/40">
+      {/* Fondo glass y orbe decorativo */}
+      <div class="absolute inset-0 bg-linear-to-br from-[#100a1c]/80 to-[#0f0a1a]/95 backdrop-blur-xl -z-10"></div>
+      <div class="absolute -top-[120px] -left-[120px] w-[240px] h-[240px] rounded-full blur-[80px] bg-brand-orange/15 group-hover:bg-brand-orange/25 transition-colors duration-700"></div>
+
+      <div>
+        <div class="flex justify-between items-center mb-6">
+          <div class="px-3.5 py-1.5 bg-brand-orange/10 border border-brand-orange/20 rounded-full">
+            <span class="text-xs font-bold text-brand-orange tracking-wider uppercase">Inicial</span>
+          </div>
+          <span class="text-xs text-white/35 font-mono flex items-center gap-1">
+            <Clock size={12} /> 20 min gratis
+          </span>
+        </div>
+
+        <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4">Sesión de Claridad</h3>
+        <p class="text-white/60 text-sm sm:text-base leading-relaxed mb-6">
+          Una llamada de 20 minutos para auditar tu enfoque profesional, revisar tu stack o guiarte en tu proyecto actual.
+        </p>
+
+        <ul class="space-y-2.5 mb-8">
+          {["Auditoría rápida de tu stack", "Identificación de bloqueadores", "Consejo directo para tu carrera"].map((item) => (
+            <li class="flex items-center gap-2.5 text-xs sm:text-sm text-white/80">
+              <CheckCircle2 size={16} class="text-brand-orange/70 shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <a href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 py-4 bg-linear-to-r from-brand-orange to-brand-yellow rounded-xl text-sm font-bold text-white shadow-lg hover:opacity-90 transition-opacity">
+        Agendar 20 min Gratis
+        <ArrowUpRight size={16} />
+      </a>
+    </div>
+
+    {/* Card B: Mentoría Personalizada */}
+    <div class="reveal-card interactive-card relative rounded-[32px] border border-brand-purple/20 overflow-hidden flex flex-col justify-between p-8 sm:p-10 min-h-[380px] group transition-all duration-500 hover:scale-[1.01] hover:border-brand-purple/40">
+      {/* Fondo glass y orbe decorativo */}
+      <div class="absolute inset-0 bg-linear-to-br from-[#100a1c]/80 to-[#0f0a1a]/95 backdrop-blur-xl -z-10"></div>
+      <div class="absolute -top-[120px] -left-[120px] w-[240px] h-[240px] rounded-full blur-[80px] bg-brand-purple/15 group-hover:bg-brand-purple/25 transition-colors duration-700"></div>
+
+      <div>
+        <div class="flex justify-between items-center mb-6">
+          <div class="px-3.5 py-1.5 bg-brand-purple/10 border border-brand-purple/20 rounded-full">
+            <span class="text-xs font-bold text-brand-purple tracking-wider uppercase">Avanzado</span>
+          </div>
+          <span class="text-xs text-white/35 font-mono flex items-center gap-1">
+            <Award size={12} class="text-brand-purple" /> Premium 1:1
+          </span>
+        </div>
+
+        <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4">Mentoría Personalizada</h3>
+        <p class="text-white/60 text-sm sm:text-base leading-relaxed mb-6">
+          Sesiones premium enfocadas en dominar Angular, Node.js, patrones de diseño y simulación de entrevistas técnicas reales.
+        </p>
+
+        <ul class="space-y-2.5 mb-8">
+          {["Revisión de código y arquitectura", "Preparación para entrevistas técnicas", "Roadmap de carrera a medida"].map((item) => (
+            <li class="flex items-center gap-2.5 text-xs sm:text-sm text-white/80">
+              <CheckCircle2 size={16} class="text-brand-purple/70 shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <a href="mailto:rodrigo.torricodelcastillo@gmail.com?subject=Consulta%20disponibilidad%20mentoria%20premium" class="w-full flex items-center justify-center gap-2 py-4 bg-white/7 border border-white/10 hover:bg-white/12 rounded-xl text-sm font-bold text-white transition-colors">
+        Consultar Disponibilidad
+        <ArrowUpRight size={16} class="text-brand-purple" />
+      </a>
+    </div>
+
+  </div>
+</section>

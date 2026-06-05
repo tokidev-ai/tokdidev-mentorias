@@ -49,3 +49,48 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #3d3560;
 }
+
+/* Animación de marquesina infinita (CSS puro) */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 25s) linear infinite;
+}
+
+/* Ocultar marcador nativo de details en Safari y navegadores webkit */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary {
+  list-style: none;
+}
+
+/* Animación de brillo y desplazamiento de gradiente de texto */
+@keyframes textShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-text-shine {
+  background-size: 200% auto;
+  animation: textShine 6s ease infinite;
+}
+
+

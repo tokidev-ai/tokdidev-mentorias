@@ -1,0 +1,72 @@
+---
+import { Bot, Calendar, Code, Users } from "lucide-astro";
+
+const services = [
+  {
+    icon: Bot,
+    title: "Integración AI-First",
+    description: "Diseño e implementación de agentes de IA y conexiones con LLMs optimizadas para tu producto y casos de uso reales.",
+    color: "#ff6b35",
+    bgColor: "rgba(255,107,53,0.12)",
+    borderColor: "rgba(255,107,53,0.25)"
+  },
+  {
+    icon: Code,
+    title: "Arquitectura y Código",
+    description: "Auditoría profunda de tus repositorios en Angular y Node.js para asegurar rendimiento, modularidad y escalabilidad a largo plazo.",
+    color: "#a406e9",
+    bgColor: "rgba(164,6,233,0.12)",
+    borderColor: "rgba(164,6,233,0.25)"
+  },
+  {
+    icon: Users,
+    title: "Estrategia Técnica",
+    description: "Mentoría y code reviews estratégicos para elevar el nivel técnico y la velocidad de entrega de tus desarrolladores.",
+    color: "#da2984",
+    bgColor: "rgba(218,41,132,0.12)",
+    borderColor: "rgba(218,41,132,0.25)"
+  }
+];
+---
+
+<section id="business" class="py-20 w-full flex flex-col items-center">
+  {/* Fila de Encabezado */}
+  <div class="w-full flex flex-col lg:flex-row gap-6 lg:gap-12 items-start lg:items-end justify-between mb-16">
+    <div class="flex-1 space-y-3">
+      <div class="flex gap-2 items-center" data-section-label>
+        <div class="bg-linear-to-r from-brand-orange to-transparent h-px w-10"></div>
+        <p class="font-mono font-medium text-[#ff8a5c] text-sm tracking-[2.88px] uppercase">EMPRESAS & STARTUPS</p>
+      </div>
+      <h2 class="font-bold text-3xl md:text-4xl text-white">Consultoría Tecnológica</h2>
+    </div>
+    <div class="flex-1 max-w-[500px]">
+      <p class="text-white/60 text-sm sm:text-base leading-relaxed">
+        Te ayudo a migrar al enfoque AI-First, estructurar arquitecturas robustas en Angular/Node.js y eliminar la deuda técnica antes de que sea costosa.
+      </p>
+    </div>
+  </div>
+
+  {/* Fila de Cards de Servicios (Grid de 3 Columnas) */}
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full items-stretch mb-14">
+    {services.map((service) => (
+      <div class="reveal-card interactive-card backdrop-blur-md bg-white/4 border border-white/8 relative rounded-3xl p-6 lg:p-8 flex flex-col justify-between min-h-[260px] transition-all duration-300 hover:border-[#da2984]/30 hover:bg-[linear-gradient(146.5deg,rgba(164,6,233,0.12)_0%,rgba(218,41,132,0.06)_100%)] group">
+        <div class="flex items-center justify-center rounded-2xl w-14 h-14 mb-8" style={`background-color: ${service.bgColor}; border: 1px solid ${service.borderColor};`}>
+          <service.icon size={26} style={`color: ${service.color};`} />
+        </div>
+        
+        <div class="space-y-3">
+          <h3 class="font-bold text-lg lg:text-xl text-white group-hover:text-brand-orange transition-colors">{service.title}</h3>
+          <p class="text-white/55 text-xs lg:text-sm leading-relaxed">{service.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Fila de Cierre de Sección (CTA Centrado) */}
+  <div class="w-full flex justify-center mt-4">
+    <a href="mailto:rodrigo.torricodelcastillo@gmail.com?subject=Consultor%C3%ADa%20B2B%20Tokidev" class="flex items-center gap-3 px-10 py-4 bg-linear-to-r from-brand-orange to-brand-yellow rounded-full text-sm font-bold text-white shadow-[0px_12px_28px_-4px_rgba(245,57,85,0.35)] hover:scale-[1.03] transition-transform">
+      <Calendar size={16} />
+      Agendar Consultoría B2B
+    </a>
+  </div>
+</section>
