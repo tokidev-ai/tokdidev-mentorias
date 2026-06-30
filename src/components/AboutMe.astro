@@ -5,36 +5,32 @@ import { ArrowRight, Award, Brain } from "lucide-astro";
 <section id="about" class="py-20 w-full flex justify-center">
   <div class="w-full flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
     {/* Columna Izquierda: Tarjeta de Perfil / Foto con Efecto de Marca */}
-    <div class="w-full lg:w-[35%] flex flex-col items-center justify-center relative">
+    <div class="w-full lg:w-[40%] flex flex-col items-center justify-center relative">
       {/* Resplandor de fondo detrás de la foto */}
-      <div class="absolute w-48 h-48 bg-[#DA2984]/20 blur-[60px] rounded-full pointer-events-none"></div>
+      <div class="absolute w-64 h-64 bg-[#DA2984]/20 blur-[60px] rounded-full pointer-events-none"></div>
 
-      <div class="relative w-48 h-48 rounded-full border border-white/10 p-2 bg-[#0f0a1c] shadow-2xl shadow-purple-950/40 group overflow-hidden">
-        {/* Borde de gradiente dinámico */}
-        <div class="absolute inset-0 bg-gradient-to-tr from-[#DA2984] via-[#A406E9] to-[#FA743F] opacity-35 group-hover:opacity-60 transition-opacity duration-500 -z-10"></div>
-        <div class="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-[#130d2b] to-[#0b0716] relative flex items-center justify-center">
-          <img 
-            src="https://res.cloudinary.com/dlppldpo1/image/upload/v1777564118/toki-photo_t8kcui.jpg" 
-            alt="Rodrigo Torrico" 
-            class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105"
-          />
-        </div>
+      <div class="relative w-60 h-60 md:w-64 md:h-64 rounded-full shadow-2xl shadow-purple-950/40 group overflow-hidden">
+        <img 
+          src="https://res.cloudinary.com/dlppldpo1/image/upload/v1777564118/toki-photo_t8kcui.jpg" 
+          alt="Rodrigo Torrico" 
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
       </div>
 
       {/* Mini Chips de Info Flotando para dar un look high-tech */}
-      <div class="absolute -top-4 -right-2 bg-[#1c1538]/90 border border-white/10 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-lg backdrop-blur-xs select-none">
-        <Award size={13} class="text-[#DA2984]" />
+      <div class="absolute -top-4 right-4 bg-[#1c1538]/90 border border-white/10 px-3.5 py-1.8 rounded-xl flex items-center gap-1.5 shadow-lg backdrop-blur-xs select-none animate-float">
+        <Award size={14} class="text-[#DA2984]" />
         <span class="text-white/80 text-[10px] font-bold font-mono uppercase tracking-wider">7+ Años Exp</span>
       </div>
 
-      <div class="absolute -bottom-4 -left-2 bg-[#1c1538]/90 border border-white/10 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-lg backdrop-blur-xs select-none">
-        <Brain size={13} class="text-[#A406E9]" />
+      <div class="absolute -bottom-4 left-4 bg-[#1c1538]/90 border border-white/10 px-3.5 py-1.8 rounded-xl flex items-center gap-1.5 shadow-lg backdrop-blur-xs select-none animate-float-delayed">
+        <Brain size={14} class="text-[#A406E9]" />
         <span class="text-white/80 text-[10px] font-bold font-mono uppercase tracking-wider">AI-First Flow</span>
       </div>
     </div>
 
     {/* Columna Derecha: Contenido Biográfico */}
-    <div class="w-full lg:w-[65%] flex flex-col items-start text-left space-y-5">
+    <div class="w-full lg:w-[60%] flex flex-col items-start text-left space-y-5">
       <div class="space-y-3">
         <div class="flex gap-2 items-center" data-section-label>
           <div class="bg-gradient-to-r from-[#DA2984] to-transparent h-px w-10"></div>
@@ -48,12 +44,12 @@ import { ArrowRight, Award, Brain } from "lucide-astro";
         </h2>
       </div>
 
-      <div class="space-y-4 text-white/70 text-sm sm:text-base leading-relaxed font-medium">
+      <div class="space-y-4 text-white/70 text-sm leading-relaxed font-medium">
         <p>
-          Soy Senior Full Stack Engineer con más de 7 años de experiencia construyendo productos escalables. En Unosquare, he liderado sistemas para más de <strong>6M de usuarios</strong>, optimizado pipelines de entrega en tiempo récord e implementado infraestructura serverless en AWS desde cero.
+          Como Senior Full Stack Engineer con más de 7 años de experiencia construyendo productos escalables, he liderado sistemas para <strong>6M de usuarios</strong> en Unosquare y optimizado pipelines de entrega en tiempo récord en AWS.
         </p>
         <p>
-          Especializado en <strong>Node.js, TypeScript, Angular, React y Go</strong>, me apasiona resolver bloqueos técnicos complejos y moverme rápido para transformar ideas en software real que genera valor inmediato, integrando herramientas de IA para optimizar la velocidad y calidad en cada fase.
+          Especializado en <strong>Node.js, TypeScript, Angular, React y Go</strong>, me enfoco en transformar ideas complejas en software real y robusto, integrando herramientas de IA para maximizar la velocidad y calidad en cada etapa.
         </p>
       </div>
 
@@ -61,11 +57,31 @@ import { ArrowRight, Award, Brain } from "lucide-astro";
         href="https://tokidev.ai" 
         target="_blank" 
         rel="noopener noreferrer" 
-        class="flex items-center gap-1.5 text-sm font-semibold text-white/50 hover:text-white transition-colors group mt-2 cursor-pointer"
+        class="w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 py-3 bg-white/5 border border-white/10 rounded-full text-xs font-semibold text-white hover:bg-white/10 transition-all hover:scale-[1.02] duration-300 cursor-pointer shadow-md"
       >
         Conocer más sobre mi trabajo
-        <span class="group-hover:translate-x-1 transition-transform duration-200 font-mono">→</span>
+        <ArrowRight size={14} class="text-[#DA2984]" />
       </a>
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 4s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+</style>

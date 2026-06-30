@@ -5,53 +5,91 @@ const links = [
   { label: "Cómo trabajamos", href: "/#workflow", target: "workflow" },
   { label: "Particulares", href: "/#personal", target: "personal" },
   { label: "Empresas", href: "/#business", target: "business" },
+  { label: "Testimonios", href: "/#testimonials", target: "testimonials" },
   { label: "FAQ", href: "/#faq", target: "faq" },
 ];
 ---
 
-<nav class="fixed top-5 lg:top-8 left-1/2 -translate-x-1/2 w-[92%] max-w-[1120px] h-14 lg:h-16 bg-brand-glass/65 backdrop-blur-xl border border-brand-border rounded-full px-5 lg:px-6 flex items-center justify-between z-50 transition-all duration-300">
-  <a href="/" class="flex items-center gap-3.5 shrink-0 group transition-opacity hover:opacity-90">
-    <img 
-      src="/assets/logos/logoTokidev.svg" 
-      alt="Tokidev Logo" 
+<nav
+  class="fixed top-5 lg:top-8 left-1/2 -translate-x-1/2 w-[92%] max-w-[1120px] h-14 lg:h-16 bg-brand-glass/65 backdrop-blur-xl border border-brand-border rounded-full px-5 lg:px-6 flex items-center justify-between z-50 transition-all duration-300"
+>
+  <a
+    href="/"
+    class="flex items-center gap-3.5 shrink-0 group transition-opacity hover:opacity-90"
+  >
+    <img
+      src="/assets/logos/logoTokidev.svg"
+      alt="Tokidev Logo"
       class="h-5.5 lg:h-6 w-auto object-contain"
     />
     <div class="h-4 w-px bg-white/20"></div>
-    <span class="text-[#a0a0b4] text-[10px] lg:text-[11px] font-bold uppercase tracking-[2px] leading-none">mentorías</span>
+    <span
+      class="text-[#a0a0b4] text-[10px] lg:text-[11px] font-bold uppercase tracking-[2px] leading-none"
+      >mentorías</span
+    >
   </a>
 
   <div class="hidden lg:flex items-center gap-1">
-    {links.map((link) => (
-      <a href={link.href} class="nav-link relative flex items-center gap-2 px-4 py-1.5 text-[13px] font-medium text-brand-text/50 hover:text-white transition-colors rounded-lg" data-target={link.target}>
-        <span class="nav-dot w-1.5 h-1.5 rounded-full bg-[#DA2984] hidden"></span>
-        <span>{link.label}</span>
-      </a>
-    ))}
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          class="nav-link relative flex items-center gap-2 px-4 py-1.5 text-[13px] font-medium text-brand-text/50 hover:text-white transition-colors rounded-lg"
+          data-target={link.target}
+        >
+          <span class="nav-dot w-1.5 h-1.5 rounded-full bg-[#DA2984] hidden" />
+          <span>{link.label}</span>
+        </a>
+      ))
+    }
   </div>
 
   <div class="hidden lg:flex items-center">
-    <a href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#DA2984] to-[#A406E9] rounded-full text-[13px] font-semibold text-white hover:brightness-110 shadow-lg shadow-purple-900/30 transition-all hover:scale-[1.02] cursor-pointer">
+    <a
+      href="https://calendly.com/tokidev/sesion-gratuita"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#DA2984] to-[#A406E9] rounded-full text-[13px] font-semibold text-white hover:brightness-110 shadow-lg shadow-purple-900/30 transition-all hover:scale-[1.02] cursor-pointer"
+    >
       Sesión Gratuita
       <ArrowRight size={14} />
     </a>
   </div>
 
-  <button id="menu-toggle" class="lg:hidden text-brand-text/70 focus:outline-none transition-colors hover:text-[#DA2984]" aria-label="Abrir menu">
+  <button
+    id="menu-toggle"
+    class="lg:hidden text-brand-text/70 focus:outline-none transition-colors hover:text-[#DA2984]"
+    aria-label="Abrir menu"
+  >
     <Menu size={24} id="menu-icon" />
     <X size={24} id="close-icon" class="hidden" />
   </button>
 </nav>
 
-<div id="mobile-menu" class="fixed inset-0 bg-brand-bg/95 backdrop-blur-2xl z-45 hidden lg:hidden">
+<div
+  id="mobile-menu"
+  class="fixed inset-0 bg-brand-bg/95 backdrop-blur-2xl z-45 hidden lg:hidden"
+>
   <div class="flex flex-col items-center justify-center w-full h-full gap-8">
     <div class="flex flex-col items-center gap-6">
-      {links.map((link) => (
-        <a href={link.href} class="mobile-nav-link relative flex items-center gap-2.5 text-[24px] font-bold text-brand-text/60 hover:text-white transition-colors" data-target={link.target}>
-          <span class="nav-dot w-2 h-2 rounded-full bg-[#DA2984] hidden"></span>
-          <span>{link.label}</span>
-        </a>
-      ))}
-      <a href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" class="mobile-link mt-4 flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#DA2984] to-[#A406E9] rounded-full text-[16px] font-bold text-white shadow-lg shadow-purple-900/30 transition-all hover:scale-[1.02] cursor-pointer">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="mobile-nav-link relative flex items-center gap-2.5 text-[24px] font-bold text-brand-text/60 hover:text-white transition-colors"
+            data-target={link.target}
+          >
+            <span class="nav-dot w-2 h-2 rounded-full bg-[#DA2984] hidden" />
+            <span>{link.label}</span>
+          </a>
+        ))
+      }
+      <a
+        href="https://calendly.com/tokidev/sesion-gratuita"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mobile-link mt-4 flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#DA2984] to-[#A406E9] rounded-full text-[16px] font-bold text-white shadow-lg shadow-purple-900/30 transition-all hover:scale-[1.02] cursor-pointer"
+      >
         Sesión Gratuita
         <ArrowRight size={18} />
       </a>
@@ -64,7 +102,9 @@ const links = [
   const mobileMenu = document.getElementById("mobile-menu");
   const menuIcon = document.getElementById("menu-icon");
   const closeIcon = document.getElementById("close-icon");
-  const mobileLinks = document.querySelectorAll(".mobile-link, .mobile-nav-link");
+  const mobileLinks = document.querySelectorAll(
+    ".mobile-link, .mobile-nav-link",
+  );
   const allNavLinks = document.querySelectorAll(".nav-link, .mobile-nav-link");
 
   function toggleMenu() {
@@ -79,7 +119,9 @@ const links = [
       const isMobile = link.classList.contains("mobile-nav-link");
       const dot = link.querySelector(".nav-dot");
       link.classList.remove("text-white");
-      link.classList.add(isMobile ? "text-brand-text/60" : "text-brand-text/50");
+      link.classList.add(
+        isMobile ? "text-brand-text/60" : "text-brand-text/50",
+      );
       dot?.classList.add("hidden");
 
       if (link.getAttribute("data-target") === targetId) {
@@ -91,12 +133,19 @@ const links = [
   }
 
   menuToggle?.addEventListener("click", toggleMenu);
-  mobileLinks.forEach((link) => link.addEventListener("click", () => !mobileMenu?.classList.contains("hidden") && toggleMenu()));
+  mobileLinks.forEach((link) =>
+    link.addEventListener(
+      "click",
+      () => !mobileMenu?.classList.contains("hidden") && toggleMenu(),
+    ),
+  );
 
   const sections = document.querySelectorAll("section[id]");
   const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => entry.isIntersecting && setActiveLink(entry.target.id));
+      entries.forEach(
+        (entry) => entry.isIntersecting && setActiveLink(entry.target.id),
+      );
       if (window.scrollY < 100) setActiveLink("hero");
     },
     { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
