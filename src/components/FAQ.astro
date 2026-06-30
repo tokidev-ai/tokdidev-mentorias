@@ -4,16 +4,19 @@ import { ChevronDown, HelpCircle } from "lucide-astro";
 const faqs = [
   {
     question: "¿Para quién es la sesión gratuita de 20 minutos?",
-    answer: "Es para developers que se sienten estancados en su aprendizaje o en su carrera actual, así como para fundadores de startups que tienen dudas sobre la dirección técnica de su producto y quieren obtener un diagnóstico rápido y sincero sin rodeos."
+    answer:
+      "Es para developers que se sienten estancados en su aprendizaje o en su carrera actual, así como para fundadores de startups que tienen dudas sobre la dirección técnica de su producto y quieren obtener un diagnóstico rápido y sincero sin rodeos.",
   },
   {
     question: "¿Qué alcance tiene la consultoría de IA para empresas?",
-    answer: "Cubre desde la conceptualización de cómo la IA puede optimizar tus flujos internos, hasta el diseño e implementación de agentes autónomos y la integración optimizada de APIs de LLMs con tus bases de datos de forma segura, reduciendo costes de tokens."
+    answer:
+      "Cubre desde la conceptualización de cómo la IA puede optimizar tus flujos internos, hasta el diseño e implementación de agentes autónomos y la integración optimizada de APIs de LLMs con tus bases de datos de forma segura, reduciendo costes de tokens.",
   },
   {
     question: "¿Cómo sé si mi startup califica para la consultoría de código?",
-    answer: "Calificas si estás experimentando cuellos de botella en el rendimiento de tu plataforma, si tu base de código en Angular o Node.js se ha vuelto inmanejable por falta de patrones de diseño, o si buscas estructurar un pipeline de entrega más sólido."
-  }
+    answer:
+      "Calificas si estás experimentando cuellos de botella en el rendimiento de tu plataforma, si tu base de código en Angular o Node.js se ha vuelto inmanejable por falta de patrones de diseño, o si buscas estructurar un pipeline de entrega más sólido.",
+  },
 ];
 ---
 
@@ -21,31 +24,48 @@ const faqs = [
   {/* Título de la sección */}
   <div class="w-full flex flex-col gap-2 items-center text-center mb-12">
     <div class="flex gap-2 items-center" data-section-label>
-      <div class="bg-gradient-to-r from-[#DA2984] to-transparent h-px w-10"></div>
-      <p class="font-mono font-medium text-[#DA2984] text-sm tracking-[2.88px] uppercase">FAQS</p>
+      <div class="bg-gradient-to-r from-[#DA2984] to-transparent h-px w-10">
+      </div>
+      <p
+        class="font-mono font-medium text-[#DA2984] text-sm tracking-[2.88px] uppercase"
+      >
+        FAQS
+      </p>
     </div>
-    <h2 class="font-bold text-3xl md:text-4xl text-white">Preguntas Frecuentes</h2>
+    <h2 class="font-bold text-3xl md:text-4xl text-white">
+      Preguntas Frecuentes
+    </h2>
   </div>
 
   {/* Contenedor Central Angosto */}
-  <div class="w-full max-w-3xl flex flex-col gap-4">
-    {faqs.map((faq) => (
-      <details class="group reveal-card backdrop-blur-md bg-white/3 border border-white/8 rounded-2xl transition-all duration-300 open:bg-white/6 open:border-[#DA2984]/20 overflow-hidden">
-        <summary class="flex items-center justify-between p-6 cursor-pointer list-none select-none outline-none">
-          <div class="flex items-center gap-3">
-            <HelpCircle size={18} class="text-[#DA2984]/70 shrink-0 group-open:text-[#DA2984] transition-colors" />
-            <span class="text-sm sm:text-base font-semibold text-white/90 group-hover:text-white transition-colors">{faq.question}</span>
+  <div class="w-full max-w-4xl flex flex-col gap-4">
+    {
+      faqs.map((faq) => (
+        <details class="group reveal-card backdrop-blur-md bg-white/3 border border-white/8 rounded-2xl transition-all duration-300 open:bg-white/6 open:border-[#DA2984]/20 overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none select-none outline-none">
+            <div class="flex items-center gap-3">
+              <HelpCircle
+                size={18}
+                class="text-[#DA2984]/70 shrink-0 group-open:text-[#DA2984] transition-colors"
+              />
+              <span class="text-sm sm:text-base font-semibold text-white/90 group-hover:text-white transition-colors">
+                {faq.question}
+              </span>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-white/60 group-open:text-[#DA2984] group-open:bg-[#DA2984]/10 group-open:border-[#DA2984]/20 transition-all">
+              <ChevronDown
+                size={16}
+                class="transition-transform duration-300 group-open:rotate-180"
+              />
+            </div>
+          </summary>
+          <div class="px-6 pb-6 pt-1 border-t border-white/5">
+            <p class="text-white/65 text-xs sm:text-sm leading-relaxed font-medium">
+              {faq.answer}
+            </p>
           </div>
-          <div class="w-8 h-8 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-white/60 group-open:text-[#DA2984] group-open:bg-[#DA2984]/10 group-open:border-[#DA2984]/20 transition-all">
-            <ChevronDown size={16} class="transition-transform duration-300 group-open:rotate-180" />
-          </div>
-        </summary>
-        <div class="px-6 pb-6 pt-1 border-t border-white/5">
-          <p class="text-white/65 text-xs sm:text-sm leading-relaxed font-medium">
-            {faq.answer}
-          </p>
-        </div>
-      </details>
-    ))}
+        </details>
+      ))
+    }
   </div>
 </section>
