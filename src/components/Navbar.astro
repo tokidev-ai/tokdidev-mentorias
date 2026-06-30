@@ -10,30 +10,35 @@ const links = [
 ---
 
 <nav class="fixed top-5 lg:top-8 left-1/2 -translate-x-1/2 w-[92%] max-w-[1120px] h-14 lg:h-16 bg-brand-glass/65 backdrop-blur-xl border border-brand-border rounded-2xl px-5 lg:px-6 flex items-center justify-between z-50 transition-all duration-300">
-  <a href="/" class="flex items-center gap-2.5 group transition-opacity hover:opacity-90">
-    <div class="w-8 h-8 rounded-lg bg-linear-to-br from-brand-orange to-brand-yellow flex items-center justify-center">
-      <span class="text-white font-bold text-lg leading-none">T</span>
+  <a href="/" class="flex items-center gap-3 shrink-0 group transition-opacity hover:opacity-90">
+    <img 
+      src="/assets/logos/IsotivoTokidev.svg" 
+      alt="Tokidev Isotipo" 
+      class="h-8 w-auto object-contain"
+    />
+    <div class="flex flex-col items-start leading-none gap-0.5">
+      <span class="text-white font-bold text-base tracking-tight">tokidev</span>
+      <span class="text-[#a0a0b4] text-[10px] font-medium uppercase tracking-wider">mentorías</span>
     </div>
-    <span class="text-brand-text font-bold text-lg tracking-tight">tokidev mentorias</span>
   </a>
 
   <div class="hidden lg:flex items-center gap-1">
     {links.map((link) => (
       <a href={link.href} class="nav-link relative flex items-center gap-2 px-4 py-1.5 text-[13px] font-medium text-brand-text/50 hover:text-white transition-colors rounded-lg" data-target={link.target}>
-        <span class="nav-dot w-1.5 h-1.5 rounded-full bg-brand-orange hidden"></span>
+        <span class="nav-dot w-1.5 h-1.5 rounded-full bg-[#DA2984] hidden"></span>
         <span>{link.label}</span>
       </a>
     ))}
   </div>
 
   <div class="hidden lg:flex items-center">
-    <a href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-brand-orange to-brand-yellow rounded-full text-[13px] font-semibold text-white hover:opacity-90 transition-opacity">
+    <a href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#DA2984] to-[#A406E9] rounded-full text-[13px] font-semibold text-white hover:brightness-110 shadow-lg shadow-purple-900/30 transition-all hover:scale-[1.02] cursor-pointer">
       Sesión Gratuita
       <ArrowRight size={14} />
     </a>
   </div>
 
-  <button id="menu-toggle" class="lg:hidden text-brand-text/70 focus:outline-none transition-colors hover:text-brand-orange" aria-label="Abrir menu">
+  <button id="menu-toggle" class="lg:hidden text-brand-text/70 focus:outline-none transition-colors hover:text-[#DA2984]" aria-label="Abrir menu">
     <Menu size={24} id="menu-icon" />
     <X size={24} id="close-icon" class="hidden" />
   </button>
@@ -44,11 +49,11 @@ const links = [
     <div class="flex flex-col items-center gap-6">
       {links.map((link) => (
         <a href={link.href} class="mobile-nav-link relative flex items-center gap-2.5 text-[24px] font-bold text-brand-text/60 hover:text-white transition-colors" data-target={link.target}>
-          <span class="nav-dot w-2 h-2 rounded-full bg-brand-orange hidden"></span>
+          <span class="nav-dot w-2 h-2 rounded-full bg-[#DA2984] hidden"></span>
           <span>{link.label}</span>
         </a>
       ))}
-      <a href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" class="mobile-link mt-4 flex items-center gap-2 px-8 py-4 bg-linear-to-r from-brand-orange to-brand-yellow rounded-full text-[16px] font-bold text-white">
+      <a href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" class="mobile-link mt-4 flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#DA2984] to-[#A406E9] rounded-full text-[16px] font-bold text-white shadow-lg shadow-purple-900/30 transition-all hover:scale-[1.02] cursor-pointer">
         Sesión Gratuita
         <ArrowRight size={18} />
       </a>
@@ -99,5 +104,5 @@ const links = [
     { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
   );
 
-  sections.forEach((sec) => observer.observe(sec));
+  sections.forEach((section) => observer.observe(section));
 </script>
