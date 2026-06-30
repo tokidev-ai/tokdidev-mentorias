@@ -21,8 +21,8 @@ const faqs = [
   {/* Título de la sección */}
   <div class="w-full flex flex-col gap-2 items-center text-center mb-12">
     <div class="flex gap-2 items-center" data-section-label>
-      <div class="bg-linear-to-r from-brand-orange to-transparent h-px w-10"></div>
-      <p class="font-mono font-medium text-[#ff8a5c] text-sm tracking-[2.88px] uppercase">FAQS</p>
+      <div class="bg-gradient-to-r from-[#DA2984] to-transparent h-px w-10"></div>
+      <p class="font-mono font-medium text-[#DA2984] text-sm tracking-[2.88px] uppercase">FAQS</p>
     </div>
     <h2 class="font-bold text-3xl md:text-4xl text-white">Preguntas Frecuentes</h2>
   </div>
@@ -30,13 +30,13 @@ const faqs = [
   {/* Contenedor Central Angosto */}
   <div class="w-full max-w-3xl flex flex-col gap-4">
     {faqs.map((faq) => (
-      <details class="group reveal-card backdrop-blur-md bg-white/3 border border-white/8 rounded-2xl transition-all duration-300 open:bg-white/6 open:border-brand-orange/20 overflow-hidden">
+      <details class="group reveal-card backdrop-blur-md bg-white/3 border border-white/8 rounded-2xl transition-all duration-300 open:bg-white/6 open:border-[#DA2984]/20 overflow-hidden">
         <summary class="flex items-center justify-between p-6 cursor-pointer list-none select-none outline-none">
           <div class="flex items-center gap-3">
-            <HelpCircle size={18} class="text-brand-orange/70 shrink-0 group-open:text-brand-orange transition-colors" />
+            <HelpCircle size={18} class="text-[#DA2984]/70 shrink-0 group-open:text-[#DA2984] transition-colors" />
             <span class="text-sm sm:text-base font-semibold text-white/90 group-hover:text-white transition-colors">{faq.question}</span>
           </div>
-          <div class="w-8 h-8 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-white/60 group-open:text-brand-orange group-open:bg-brand-orange/10 group-open:border-brand-orange/20 transition-all">
+          <div class="w-8 h-8 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-white/60 group-open:text-[#DA2984] group-open:bg-[#DA2984]/10 group-open:border-[#DA2984]/20 transition-all">
             <ChevronDown size={16} class="transition-transform duration-300 group-open:rotate-180" />
           </div>
         </summary>
