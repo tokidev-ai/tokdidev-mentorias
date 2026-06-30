@@ -1,111 +1,49 @@
 ---
-import { Bot, Network } from "lucide-astro";
+const technologies = [
+  "Angular",
+  "Node.js",
+  "AI Agents",
+  "LLMs",
+  "Supabase",
+  "TypeScript",
+  "Docker",
+  "GraphQL",
+  "PostgreSQL",
+  "Astro",
+  "Tailwind CSS"
+];
 ---
 
-<div class="w-full flex flex-col items-center py-8 lg:py-12 my-6">
+<div class="w-full flex flex-col items-center py-6 my-6">
   {/* Título superior centrado */}
-  <h2 class="text-center text-[#8c8f9e] text-xs lg:text-sm font-mono tracking-[3.2px] uppercase mb-8">
+  <h2 class="text-center text-[#8c8f9e]/60 text-xs font-mono tracking-[3.2px] uppercase mb-8">
     Tecnologías que domino y con las que escalaremos tu proyecto
   </h2>
 
   {/* Contenedor de la marquesina con desvanecimiento lateral mediante gradiente de máscara */}
   <div class="relative w-full overflow-hidden border-y border-white/6 py-6 bg-white/2 backdrop-blur-xs select-none [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
-    <div class="animate-marquee flex items-center gap-16 lg:gap-24">
-      {/* Primer set de logos */}
-      <div class="flex items-center gap-16 lg:gap-24 shrink-0">
-        {/* Angular */}
-        <div class="flex items-center gap-3 group">
-          <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current text-white/45 group-hover:text-brand-orange transition-colors" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 5.5v5.2c0 5.4 3.8 10.4 10 11.8 6.2-1.4 10-6.4 10-11.8V5.5L12 2zm0 3.3l5.5 11.2h-2.1l-1.2-2.7H9.8l-1.2 2.7H6.5L12 5.3zm-1.4 6.8h2.8L12 9.2l-1.4 2.9z"/>
-          </svg>
-          <span class="text-white/45 font-mono text-sm tracking-wider uppercase group-hover:text-white transition-colors">Angular</span>
-        </div>
-
-        {/* Node.js */}
-        <div class="flex items-center gap-3 group">
-          <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current text-white/45 group-hover:text-[#6cc24a] transition-colors" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L3.5 7v10L12 22l8.5-5V7L12 2zm6.5 13.9l-6.5 3.8-6.5-3.8V8.1l6.5-3.8 6.5 3.8v7.8z"/>
-            <path d="M12 8.5v7l6-3.5v-7l-6 3.5z" opacity="0.6"/>
-          </svg>
-          <span class="text-white/45 font-mono text-sm tracking-wider uppercase group-hover:text-white transition-colors">Node.js</span>
-        </div>
-
-        {/* AI Agents */}
-        <div class="flex items-center gap-3 group">
-          <Bot class="w-6 h-6 text-white/45 group-hover:text-brand-yellow transition-colors" />
-          <span class="text-white/45 font-mono text-sm tracking-wider uppercase group-hover:text-white transition-colors">AI Agents</span>
-        </div>
-
-        {/* LLMs */}
-        <div class="flex items-center gap-3 group">
-          <Network class="w-6 h-6 text-white/45 group-hover:text-brand-purple transition-colors" />
-          <span class="text-white/45 font-mono text-sm tracking-wider uppercase group-hover:text-white transition-colors">LLMs</span>
-        </div>
-
-        {/* Supabase */}
-        <div class="flex items-center gap-3 group">
-          <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current text-white/45 group-hover:text-[#3ecf8e] transition-colors" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19 10.5h-5.5L16.5 2h-9L4.5 13.5H10L7.5 22h9l2.5-9.5z"/>
-          </svg>
-          <span class="text-white/45 font-mono text-sm tracking-wider uppercase group-hover:text-white transition-colors">Supabase</span>
-        </div>
-
-        {/* TypeScript */}
-        <div class="flex items-center gap-3 group">
-          <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current text-white/45 group-hover:text-[#3178c6] transition-colors" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 2v20h20V2H2zm12.5 14.5c0 .3-.1.5-.3.7-.2.2-.5.3-.9.3-.5 0-.9-.2-1.1-.6-.2-.3-.3-.8-.3-1.4h-1.6c0 1 .3 1.8.8 2.3.5.5 1.3.8 2.2.8.9 0 1.6-.3 2.1-.8.5-.5.8-1.2.8-2v-.1c0-.7-.2-1.3-.7-1.7-.4-.3-1.1-.6-2-.9-.7-.3-1.1-.5-1.3-.6-.2-.2-.3-.4-.3-.7v-.1c0-.3.1-.5.3-.6.2-.2.5-.2.8-.2.4 0 .7.1.9.4.2.3.3.6.3 1.1h1.6c0-.8-.2-1.4-.7-1.9-.5-.4-1.1-.7-2-.7-.9 0-1.6.3-2.1.8-.5.5-.7 1.1-.7 1.9v.1c0 .7.2 1.2.7 1.6.5.3 1.1.6 2 .9.7.2 1.1.4 1.3.6.2.2.3.4.3.7v.1zM9.3 9.7H5.6v1.7h1.4v6.8H8.6v-6.8h1.4V9.7" />
-          </svg>
-          <span class="text-white/45 font-mono text-sm tracking-wider uppercase group-hover:text-white transition-colors">TypeScript</span>
-        </div>
-      </div>
-
-      {/* Segundo set de logos (Duplicado exacto para efecto infinito sin cortes) */}
-      <div class="flex items-center gap-16 lg:gap-24 shrink-0">
-        {/* Angular */}
-        <div class="flex items-center gap-3 group">
-          <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current text-white/45 group-hover:text-brand-orange transition-colors" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 5.5v5.2c0 5.4 3.8 10.4 10 11.8 6.2-1.4 10-6.4 10-11.8V5.5L12 2zm0 3.3l5.5 11.2h-2.1l-1.2-2.7H9.8l-1.2 2.7H6.5L12 5.3zm-1.4 6.8h2.8L12 9.2l-1.4 2.9z"/>
-          </svg>
-          <span class="text-white/45 font-mono text-sm tracking-wider uppercase group-hover:text-white transition-colors">Angular</span>
-        </div>
-
-        {/* Node.js */}
-        <div class="flex items-center gap-3 group">
-          <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current text-white/45 group-hover:text-[#6cc24a] transition-colors" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L3.5 7v10L12 22l8.5-5V7L12 2zm6.5 13.9l-6.5 3.8-6.5-3.8V8.1l6.5-3.8 6.5 3.8v7.8z"/>
-            <path d="M12 8.5v7l6-3.5v-7l-6 3.5z" opacity="0.6"/>
-          </svg>
-          <span class="text-white/45 font-mono text-sm tracking-wider uppercase group-hover:text-white transition-colors">Node.js</span>
-        </div>
-
-        {/* AI Agents */}
-        <div class="flex items-center gap-3 group">
-          <Bot class="w-6 h-6 text-white/45 group-hover:text-brand-yellow transition-colors" />
-          <span class="text-white/45 font-mono text-sm tracking-wider uppercase group-hover:text-white transition-colors">AI Agents</span>
-        </div>
-
-        {/* LLMs */}
-        <div class="flex items-center gap-3 group">
-          <Network class="w-6 h-6 text-white/45 group-hover:text-brand-purple transition-colors" />
-          <span class="text-white/45 font-mono text-sm tracking-wider uppercase group-hover:text-white transition-colors">LLMs</span>
-        </div>
-
-        {/* Supabase */}
-        <div class="flex items-center gap-3 group">
-          <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current text-white/45 group-hover:text-[#3ecf8e] transition-colors" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19 10.5h-5.5L16.5 2h-9L4.5 13.5H10L7.5 22h9l2.5-9.5z"/>
-          </svg>
-          <span class="text-white/45 font-mono text-sm tracking-wider uppercase group-hover:text-white transition-colors">Supabase</span>
-        </div>
-
-        {/* TypeScript */}
-        <div class="flex items-center gap-3 group">
-          <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current text-white/45 group-hover:text-[#3178c6] transition-colors" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 2v20h20V2H2zm12.5 14.5c0 .3-.1.5-.3.7-.2.2-.5.3-.9.3-.5 0-.9-.2-1.1-.6-.2-.3-.3-.8-.3-1.4h-1.6c0 1 .3 1.8.8 2.3.5.5 1.3.8 2.2.8.9 0 1.6-.3 2.1-.8.5-.5.8-1.2.8-2v-.1c0-.7-.2-1.3-.7-1.7-.4-.3-1.1-.6-2-.9-.7-.3-1.1-.5-1.3-.6-.2-.2-.3-.4-.3-.7v-.1c0-.3.1-.5.3-.6.2-.2.5-.2.8-.2.4 0 .7.1.9.4.2.3.3.6.3 1.1h1.6c0-.8-.2-1.4-.7-1.9-.5-.4-1.1-.7-2-.7-.9 0-1.6.3-2.1.8-.5.5-.7 1.1-.7 1.9v.1c0 .7.2 1.2.7 1.6.5.3 1.1.6 2 .9.7.2 1.1.4 1.3.6.2.2.3.4.3.7v.1zM9.3 9.7H5.6v1.7h1.4v6.8H8.6v-6.8h1.4V9.7" />
-          </svg>
-          <span class="text-white/45 font-mono text-sm tracking-wider uppercase group-hover:text-white transition-colors">TypeScript</span>
-        </div>
-      </div>
+    <div class="animate-marquee flex items-center gap-14 whitespace-nowrap text-[#8c8f9e] text-sm font-mono tracking-wider">
+      <!-- First set -->
+      {technologies.map((tech) => <span class="shrink-0">{tech}</span>)}
+      <!-- Second set for seamless loop -->
+      {technologies.map((tech) => <span class="shrink-0">{tech}</span>)}
     </div>
   </div>
 </div>
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 25s linear infinite;
+  }
+</style>

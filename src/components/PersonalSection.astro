@@ -7,8 +7,8 @@ import { ArrowUpRight, Award, CheckCircle2, Clock } from "lucide-astro";
   <div class="w-full flex flex-col lg:flex-row gap-6 lg:gap-12 items-start lg:items-end justify-between mb-16">
     <div class="flex-1 space-y-3">
       <div class="flex gap-2 items-center" data-section-label>
-        <div class="bg-linear-to-r from-brand-orange to-transparent h-px w-10"></div>
-        <p class="font-mono font-medium text-[#ff8a5c] text-sm tracking-[2.88px] uppercase">PARTICULARES</p>
+        <div class="bg-gradient-to-r from-[#DA2984] to-transparent h-px w-10"></div>
+        <p class="font-mono font-medium text-[#DA2984] text-sm tracking-[2.88px] uppercase">PARTICULARES</p>
       </div>
       <h2 class="font-bold text-3xl md:text-4xl text-white">Destraba tu carrera técnica hoy mismo</h2>
     </div>
@@ -23,15 +23,15 @@ import { ArrowUpRight, Award, CheckCircle2, Clock } from "lucide-astro";
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full items-stretch">
     
     {/* Card A: Sesión de Claridad */}
-    <div class="reveal-card interactive-card relative rounded-[32px] border border-brand-orange/20 overflow-hidden flex flex-col justify-between p-8 sm:p-10 min-h-[380px] group transition-all duration-500 hover:scale-[1.01] hover:border-brand-orange/40">
+    <div class="reveal-card interactive-card relative rounded-[32px] border border-[#DA2984]/20 overflow-hidden flex flex-col justify-between p-8 sm:p-10 min-h-[380px] group transition-all duration-500 hover:scale-[1.01] hover:border-[#DA2984]/40">
       {/* Fondo glass y orbe decorativo */}
       <div class="absolute inset-0 bg-linear-to-br from-[#100a1c]/80 to-[#0f0a1a]/95 backdrop-blur-xl -z-10"></div>
-      <div class="absolute -top-[120px] -left-[120px] w-[240px] h-[240px] rounded-full blur-[80px] bg-brand-orange/15 group-hover:bg-brand-orange/25 transition-colors duration-700"></div>
+      <div class="absolute -top-[120px] -left-[120px] w-[240px] h-[240px] rounded-full blur-[80px] bg-[#DA2984]/15 group-hover:bg-[#DA2984]/25 transition-colors duration-700"></div>
 
       <div>
         <div class="flex justify-between items-center mb-6">
-          <div class="px-3.5 py-1.5 bg-brand-orange/10 border border-brand-orange/20 rounded-full">
-            <span class="text-xs font-bold text-brand-orange tracking-wider uppercase">Inicial</span>
+          <div class="px-3.5 py-1.5 bg-[#DA2984]/10 border border-[#DA2984]/20 rounded-full">
+            <span class="text-xs font-bold text-[#DA2984] tracking-wider uppercase">Inicial</span>
           </div>
           <span class="text-xs text-white/35 font-mono flex items-center gap-1">
             <Clock size={12} /> 20 min gratis
@@ -46,32 +46,32 @@ import { ArrowUpRight, Award, CheckCircle2, Clock } from "lucide-astro";
         <ul class="space-y-2.5 mb-8">
           {["Auditoría rápida de tu stack", "Identificación de bloqueadores", "Consejo directo para tu carrera"].map((item) => (
             <li class="flex items-center gap-2.5 text-xs sm:text-sm text-white/80">
-              <CheckCircle2 size={16} class="text-brand-orange/70 shrink-0" />
+              <CheckCircle2 size={16} class="text-[#DA2984]/70 shrink-0" />
               <span>{item}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      <a href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 py-4 bg-linear-to-r from-brand-orange to-brand-yellow rounded-xl text-sm font-bold text-white shadow-lg hover:opacity-90 transition-opacity">
+      <a href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-[#DA2984] to-[#A406E9] rounded-xl text-sm font-bold text-white hover:brightness-110 shadow-lg shadow-purple-900/30 transition-all hover:scale-[1.02] cursor-pointer">
         Agendar 20 min Gratis
         <ArrowUpRight size={16} />
       </a>
     </div>
 
     {/* Card B: Mentoría Personalizada */}
-    <div class="reveal-card interactive-card relative rounded-[32px] border border-brand-purple/20 overflow-hidden flex flex-col justify-between p-8 sm:p-10 min-h-[380px] group transition-all duration-500 hover:scale-[1.01] hover:border-brand-purple/40">
+    <div class="reveal-card interactive-card relative rounded-[32px] border border-[#A406E9]/20 overflow-hidden flex flex-col justify-between p-8 sm:p-10 min-h-[380px] group transition-all duration-500 hover:scale-[1.01] hover:border-[#A406E9]/40">
       {/* Fondo glass y orbe decorativo */}
       <div class="absolute inset-0 bg-linear-to-br from-[#100a1c]/80 to-[#0f0a1a]/95 backdrop-blur-xl -z-10"></div>
-      <div class="absolute -top-[120px] -left-[120px] w-[240px] h-[240px] rounded-full blur-[80px] bg-brand-purple/15 group-hover:bg-brand-purple/25 transition-colors duration-700"></div>
+      <div class="absolute -top-[120px] -left-[120px] w-[240px] h-[240px] rounded-full blur-[80px] bg-[#A406E9]/15 group-hover:bg-[#A406E9]/25 transition-colors duration-700"></div>
 
       <div>
         <div class="flex justify-between items-center mb-6">
-          <div class="px-3.5 py-1.5 bg-brand-purple/10 border border-brand-purple/20 rounded-full">
-            <span class="text-xs font-bold text-brand-purple tracking-wider uppercase">Avanzado</span>
+          <div class="px-3.5 py-1.5 bg-[#A406E9]/10 border border-[#A406E9]/20 rounded-full">
+            <span class="text-xs font-bold text-[#A406E9] tracking-wider uppercase">Avanzado</span>
           </div>
           <span class="text-xs text-white/35 font-mono flex items-center gap-1">
-            <Award size={12} class="text-brand-purple" /> Premium 1:1
+            <Award size={12} class="text-[#A406E9]" /> Premium 1:1
           </span>
         </div>
 
@@ -83,16 +83,16 @@ import { ArrowUpRight, Award, CheckCircle2, Clock } from "lucide-astro";
         <ul class="space-y-2.5 mb-8">
           {["Revisión de código y arquitectura", "Preparación para entrevistas técnicas", "Roadmap de carrera a medida"].map((item) => (
             <li class="flex items-center gap-2.5 text-xs sm:text-sm text-white/80">
-              <CheckCircle2 size={16} class="text-brand-purple/70 shrink-0" />
+              <CheckCircle2 size={16} class="text-[#A406E9]/70 shrink-0" />
               <span>{item}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      <a href="mailto:rodrigo.torricodelcastillo@gmail.com?subject=Consulta%20disponibilidad%20mentoria%20premium" class="w-full flex items-center justify-center gap-2 py-4 bg-white/7 border border-white/10 hover:bg-white/12 rounded-xl text-sm font-bold text-white transition-colors">
+      <a href="mailto:rodrigo.torricodelcastillo@gmail.com?subject=Consulta%20disponibilidad%20mentoria%20premium" class="w-full flex items-center justify-center gap-2 py-4 bg-white/7 border border-white/10 hover:bg-white/12 rounded-xl text-sm font-bold text-white transition-colors cursor-pointer">
         Consultar Disponibilidad
-        <ArrowUpRight size={16} class="text-brand-purple" />
+        <ArrowUpRight size={16} class="text-[#A406E9]" />
       </a>
     </div>
 
