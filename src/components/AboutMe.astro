@@ -1,0 +1,71 @@
+---
+import { ArrowRight, Award, Brain } from "lucide-astro";
+---
+
+<section id="about" class="py-20 w-full flex justify-center">
+  <div class="w-full flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+    {/* Columna Izquierda: Tarjeta de Perfil / Foto con Efecto de Marca */}
+    <div class="w-full lg:w-[35%] flex flex-col items-center justify-center relative">
+      {/* Resplandor de fondo detrás de la foto */}
+      <div class="absolute w-48 h-48 bg-[#DA2984]/20 blur-[60px] rounded-full pointer-events-none"></div>
+
+      <div class="relative w-48 h-48 rounded-full border border-white/10 p-2 bg-[#0f0a1c] shadow-2xl shadow-purple-950/40 group overflow-hidden">
+        {/* Borde de gradiente dinámico */}
+        <div class="absolute inset-0 bg-gradient-to-tr from-[#DA2984] via-[#A406E9] to-[#FA743F] opacity-35 group-hover:opacity-60 transition-opacity duration-500 -z-10"></div>
+        <div class="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-[#130d2b] to-[#0b0716] relative flex items-center justify-center">
+          <img 
+            src="https://res.cloudinary.com/dlppldpo1/image/upload/v1777564118/toki-photo_t8kcui.jpg" 
+            alt="Rodrigo Torrico" 
+            class="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+      </div>
+
+      {/* Mini Chips de Info Flotando para dar un look high-tech */}
+      <div class="absolute -top-4 -right-2 bg-[#1c1538]/90 border border-white/10 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-lg backdrop-blur-xs select-none">
+        <Award size={13} class="text-[#DA2984]" />
+        <span class="text-white/80 text-[10px] font-bold font-mono uppercase tracking-wider">7+ Años Exp</span>
+      </div>
+
+      <div class="absolute -bottom-4 -left-2 bg-[#1c1538]/90 border border-white/10 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-lg backdrop-blur-xs select-none">
+        <Brain size={13} class="text-[#A406E9]" />
+        <span class="text-white/80 text-[10px] font-bold font-mono uppercase tracking-wider">AI-First Flow</span>
+      </div>
+    </div>
+
+    {/* Columna Derecha: Contenido Biográfico */}
+    <div class="w-full lg:w-[65%] flex flex-col items-start text-left space-y-5">
+      <div class="space-y-3">
+        <div class="flex gap-2 items-center" data-section-label>
+          <div class="bg-gradient-to-r from-[#DA2984] to-transparent h-px w-10"></div>
+          <p class="font-mono font-medium text-[#DA2984] text-sm tracking-[2.88px] uppercase">SOBRE MÍ</p>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight tracking-tight">
+          Rodrigo Torrico
+          <span class="block text-base md:text-lg font-mono font-medium text-white/50 mt-1">
+            Senior Full Stack Engineer & Tech Mentor
+          </span>
+        </h2>
+      </div>
+
+      <div class="space-y-4 text-white/70 text-sm sm:text-base leading-relaxed font-medium">
+        <p>
+          Soy Senior Full Stack Engineer con más de 7 años de experiencia construyendo productos escalables. En Unosquare, he liderado sistemas para más de <strong>6M de usuarios</strong>, optimizado pipelines de entrega en tiempo récord e implementado infraestructura serverless en AWS desde cero.
+        </p>
+        <p>
+          Especializado en <strong>Node.js, TypeScript, Angular, React y Go</strong>, me apasiona resolver bloqueos técnicos complejos y moverme rápido para transformar ideas en software real que genera valor inmediato, integrando herramientas de IA para optimizar la velocidad y calidad en cada fase.
+        </p>
+      </div>
+
+      <a 
+        href="https://tokidev.ai" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="flex items-center gap-1.5 text-sm font-semibold text-white/50 hover:text-white transition-colors group mt-2 cursor-pointer"
+      >
+        Conocer más sobre mi trabajo
+        <span class="group-hover:translate-x-1 transition-transform duration-200 font-mono">→</span>
+      </a>
+    </div>
+  </div>
+</section>

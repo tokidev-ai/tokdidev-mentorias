@@ -51,11 +51,11 @@ const steps = [
         {index < steps.length - 1 && (
           <>
             {/* Conector horizontal para desktop (Chevron a la derecha) */}
-            <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 left-[calc(100%_-_18px)] w-9 h-9 rounded-full bg-[#0a111a] border border-brand-border/40 items-center justify-center z-20 shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-brand-orange group-hover:scale-110 group-hover:border-brand-orange/40 transition-all duration-300">
+            <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 left-[calc(100%_-_18px)] w-9 h-9 rounded-full bg-[#0a111a] border border-brand-border/40 items-center justify-center z-20 shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-[#DA2984] group-hover:scale-110 group-hover:border-[#DA2984]/40 transition-all duration-300">
               <ArrowRight size={16} />
             </div>
             {/* Conector vertical para mobile (Chevron hacia abajo) */}
-            <div class="flex md:hidden absolute top-[calc(100%_-_18px)] left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-[#0a111a] border border-brand-border/40 items-center justify-center z-20 shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-brand-orange">
+            <div class="flex md:hidden absolute top-[calc(100%_-_18px)] left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-[#0a111a] border border-brand-border/40 items-center justify-center z-20 shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-[#DA2984]">
               <ArrowDown size={16} />
             </div>
           </>
@@ -69,7 +69,7 @@ const steps = [
         </div>
         
         <div class="space-y-3 z-10">
-          <h3 class="font-bold text-xl text-white group-hover:text-brand-orange transition-colors">{step.title}</h3>
+          <h3 class="font-bold text-xl text-white group-hover:text-[#DA2984] transition-colors">{step.title}</h3>
           <p class="text-white/60 text-sm leading-relaxed">{step.description}</p>
         </div>
       </div>
