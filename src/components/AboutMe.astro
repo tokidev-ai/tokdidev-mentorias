@@ -2,11 +2,9 @@
 import { ArrowRight, Award, Brain } from "lucide-astro";
 ---
 
-<section id="about" class="py-20 w-full flex justify-center">
+<section id="about" class="py-16 lg:py-24 w-full flex justify-center">
   <div class="w-full flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
-    {/* Columna Izquierda: Tarjeta de Perfil / Foto con Efecto de Marca */}
     <div class="w-full lg:w-[40%] flex flex-col items-center justify-center relative">
-      {/* Resplandor de fondo detrás de la foto */}
       <div class="absolute w-64 h-64 bg-[#DA2984]/20 blur-[60px] rounded-full pointer-events-none"></div>
 
       <div class="relative w-60 h-60 md:w-64 md:h-64 rounded-full shadow-2xl shadow-purple-950/40 group overflow-hidden">
@@ -17,10 +15,9 @@ import { ArrowRight, Award, Brain } from "lucide-astro";
         />
       </div>
 
-      {/* Mini Chips de Info Flotando para dar un look high-tech */}
       <div class="absolute -top-4 right-4 bg-[#1c1538]/90 border border-white/10 px-3.5 py-1.8 rounded-xl flex items-center gap-1.5 shadow-lg backdrop-blur-xs select-none animate-float">
         <Award size={14} class="text-[#DA2984]" />
-        <span class="text-white/80 text-[10px] font-bold font-mono uppercase tracking-wider">7+ Años Exp</span>
+        <span class="text-white/80 text-[10px] font-bold font-mono uppercase tracking-wider">7+ Anos Exp</span>
       </div>
 
       <div class="absolute -bottom-4 left-4 bg-[#1c1538]/90 border border-white/10 px-3.5 py-1.8 rounded-xl flex items-center gap-1.5 shadow-lg backdrop-blur-xs select-none animate-float-delayed">
@@ -29,27 +26,25 @@ import { ArrowRight, Award, Brain } from "lucide-astro";
       </div>
     </div>
 
-    {/* Columna Derecha: Contenido Biográfico */}
     <div class="w-full lg:w-[60%] flex flex-col items-start text-left space-y-5">
       <div class="space-y-3">
-        <div class="flex gap-2 items-center" data-section-label>
-          <div class="bg-gradient-to-r from-[#DA2984] to-transparent h-px w-10"></div>
-          <p class="font-mono font-medium text-[#DA2984] text-sm tracking-[2.88px] uppercase">SOBRE MÍ</p>
-        </div>
+        <p class="font-mono font-medium text-xs tracking-[0.6px] bg-clip-text text-transparent bg-gradient-to-r from-[#DA2984] to-[#A406E9] uppercase">
+          08 — SOBRE MI
+        </p>
         <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight tracking-tight">
           Rodrigo Torrico
-          <span class="block text-base md:text-lg font-mono font-medium text-white/50 mt-1">
+          <span class="block text-base md:text-lg font-mono font-medium text-[#a0a0b4] mt-1">
             Senior Full Stack Engineer & Tech Mentor
           </span>
         </h2>
       </div>
 
-      <div class="space-y-4 text-white/70 text-sm leading-relaxed font-medium">
+      <div class="space-y-4 text-[#a0a0b4] text-sm leading-relaxed font-medium">
         <p>
-          Como Senior Full Stack Engineer con más de 7 años de experiencia construyendo productos escalables, he liderado sistemas para <strong>6M de usuarios</strong> en Unosquare y optimizado pipelines de entrega en tiempo récord en AWS.
+          Como Senior Full Stack Engineer con mas de 7 anos de experiencia construyendo productos escalables, he liderado sistemas para <strong class="text-white font-semibold">6M de usuarios</strong> en Unosquare y optimizado pipelines de entrega en tiempo record en AWS.
         </p>
         <p>
-          Especializado en <strong>Node.js, TypeScript, Angular, React y Go</strong>, me enfoco en transformar ideas complejas en software real y robusto, integrando herramientas de IA para maximizar la velocidad y calidad en cada etapa.
+          Especializado en <strong class="text-white font-semibold">Node.js, TypeScript, Angular, React y Go</strong>, me enfoco en transformar ideas complejas en software real y robusto, integrando herramientas de IA para maximizar la velocidad y calidad en cada etapa.
         </p>
       </div>
 
@@ -59,7 +54,7 @@ import { ArrowRight, Award, Brain } from "lucide-astro";
         rel="noopener noreferrer" 
         class="w-full sm:w-auto flex items-center justify-center gap-2.5 px-6 py-3 bg-white/5 border border-white/10 rounded-full text-xs font-semibold text-white hover:bg-white/10 transition-all hover:scale-[1.02] duration-300 cursor-pointer shadow-md"
       >
-        Conocer más sobre mi trabajo
+        Conocer mas sobre mi trabajo
         <ArrowRight size={14} class="text-[#DA2984]" />
       </a>
     </div>

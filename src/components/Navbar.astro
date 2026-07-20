@@ -1,155 +1,186 @@
 ---
-import { ArrowRight, Menu, X } from "lucide-astro";
+import { Menu, X } from 'lucide-astro';
+import Button from './Button.astro';
 
-const links = [
-  { label: "Cómo trabajamos", href: "/#workflow", target: "workflow" },
-  { label: "Particulares", href: "/#personal", target: "personal" },
-  { label: "Empresas", href: "/#business", target: "business" },
-  { label: "Testimonios", href: "/#testimonials", target: "testimonials" },
-  { label: "FAQ", href: "/#faq", target: "faq" },
+const navTabs = [
+  { name: 'WORKFLOW', href: '/#workflow', target: 'workflow' },
+  { name: 'PARTICULARES', href: '/#personal', target: 'personal' },
+  { name: 'EMPRESAS', href: '/#business', target: 'business' },
+  { name: 'TESTIMONIOS', href: '/#testimonials', target: 'testimonials' },
+  { name: 'FAQ', href: '/#faq', target: 'faq' },
 ];
 ---
 
-<nav
-  class="fixed top-5 lg:top-8 left-1/2 -translate-x-1/2 w-[92%] max-w-[1120px] h-14 lg:h-16 bg-brand-glass/65 backdrop-blur-xl border border-brand-border rounded-full px-5 lg:px-6 flex items-center justify-between z-50 transition-all duration-300"
+<nav 
+  id="main-navbar" 
+  class="fixed top-4 lg:top-6 left-1/2 -translate-x-1/2 w-[94%] max-w-[1240px] h-16 flex items-center justify-between z-50 px-4 lg:px-6 rounded-full border border-transparent"
 >
-  <a
-    href="/"
-    class="flex items-center gap-3.5 shrink-0 group transition-opacity hover:opacity-90"
-  >
-    <img
-      src="/assets/logos/logoTokidev.svg"
-      alt="Tokidev Logo"
-      class="h-5.5 lg:h-6 w-auto object-contain"
-    />
+  <a href="/" class="flex items-center gap-3 shrink-0 group transition-opacity hover:opacity-90">
+    <div class="h-9 w-auto flex items-center justify-center">
+      <img 
+        src="/assets/logos/logoTokidev.svg" 
+        alt="Tokidev Logo" 
+        class="h-9 w-auto object-contain" 
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="hidden items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-r from-brand-red to-brand-orange flex items-center justify-center shadow-md shadow-brand-red/30">
+          <span class="text-white font-bold text-lg leading-none">T</span>
+        </div>
+        <span class="text-white font-extrabold text-xl tracking-tight">tokidev</span>
+      </div>
+    </div>
     <div class="h-4 w-px bg-white/20"></div>
-    <span
-      class="text-[#a0a0b4] text-[10px] lg:text-[11px] font-bold uppercase tracking-[2px] leading-none"
-      >mentorías</span
-    >
+    <span class="text-[#a0a0b4] text-[10px] lg:text-[11px] font-bold uppercase tracking-[2px] leading-none">mentorías</span>
   </a>
 
-  <div class="hidden lg:flex items-center gap-1">
-    {
-      links.map((link) => (
-        <a
-          href={link.href}
-          class="nav-link relative flex items-center gap-2 px-4 py-1.5 text-[13px] font-medium text-brand-text/50 hover:text-white transition-colors rounded-lg"
-          data-target={link.target}
-        >
-          <span class="nav-dot w-1.5 h-1.5 rounded-full bg-[#DA2984] hidden" />
-          <span>{link.label}</span>
-        </a>
-      ))
-    }
-  </div>
-
-  <div class="hidden lg:flex items-center">
-    <a
-      href="https://calendly.com/tokidev/sesion-gratuita"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#DA2984] to-[#A406E9] rounded-full text-[13px] font-semibold text-white hover:brightness-110 shadow-lg shadow-purple-900/30 transition-all hover:scale-[1.02] cursor-pointer"
-    >
-      Sesión Gratuita
-      <ArrowRight size={14} />
-    </a>
-  </div>
-
-  <button
-    id="menu-toggle"
-    class="lg:hidden text-brand-text/70 focus:outline-none transition-colors hover:text-[#DA2984]"
-    aria-label="Abrir menu"
+  <div 
+    id="nav-pill" 
+    class="hidden lg:flex items-center gap-1 rounded-full p-1.5 border border-transparent"
   >
-    <Menu size={24} id="menu-icon" />
-    <X size={24} id="close-icon" class="hidden" />
+    {navTabs.map(tab => (
+      <a 
+        href={tab.href} 
+        class="nav-tab relative flex items-center justify-center px-4 py-2 rounded-full text-[11px] font-medium tracking-[0.44px] text-[#c8c8d7] hover:text-white transition-all duration-300 uppercase" 
+        data-target={tab.target}
+      >
+        <span class="nav-active-bg absolute inset-0 rounded-full bg-gradient-to-r from-[#DA2984] to-[#A406E9] opacity-0 transition-opacity duration-300 -z-10 shadow-sm shadow-purple-500/30"></span>
+        <span class="nav-text relative z-10">{tab.name}</span>
+      </a>
+    ))}
+  </div>
+
+  <div class="hidden lg:flex items-center gap-4 shrink-0">
+    <div 
+      id="status-pill" 
+      class="px-3.5 py-2 rounded-full flex items-center gap-2.5 text-[#c8d2d2] text-[11px] font-medium tracking-[0.22px] border border-transparent"
+    >
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+      </span>
+      <span>Disponible</span>
+    </div>
+
+    <Button href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" size="sm">Sesión Gratuita</Button>
+  </div>
+
+  <button id="menu-toggle" class="lg:hidden text-white/90 focus:outline-none transition-colors hover:text-brand-orange p-2.5 flex items-center justify-center">
+    <Menu size={22} id="menu-icon" />
+    <X size={22} id="close-icon" class="hidden" />
   </button>
 </nav>
 
-<div
-  id="mobile-menu"
-  class="fixed inset-0 bg-brand-bg/95 backdrop-blur-2xl z-45 hidden lg:hidden"
->
-  <div class="flex flex-col items-center justify-center w-full h-full gap-8">
-    <div class="flex flex-col items-center gap-6">
-      {
-        links.map((link) => (
-          <a
-            href={link.href}
-            class="mobile-nav-link relative flex items-center gap-2.5 text-[24px] font-bold text-brand-text/60 hover:text-white transition-colors"
-            data-target={link.target}
-          >
-            <span class="nav-dot w-2 h-2 rounded-full bg-[#DA2984] hidden" />
-            <span>{link.label}</span>
-          </a>
-        ))
-      }
-      <a
-        href="https://calendly.com/tokidev/sesion-gratuita"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mobile-link mt-4 flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#DA2984] to-[#A406E9] rounded-full text-[16px] font-bold text-white shadow-lg shadow-purple-900/30 transition-all hover:scale-[1.02] cursor-pointer"
-      >
-        Sesión Gratuita
-        <ArrowRight size={18} />
-      </a>
+<div id="mobile-menu" class="fixed inset-0 bg-brand-bg/98 backdrop-blur-3xl z-45 hidden lg:hidden transition-all duration-300">
+  <div class="flex flex-col items-center justify-between w-full h-full pt-28 pb-12 px-6">
+    <div class="flex flex-col items-center gap-3 w-full max-w-sm my-auto">
+      {navTabs.map(tab => (
+        <a 
+          href={tab.href} 
+          class="mobile-nav-tab w-full text-center py-3.5 text-base font-semibold text-white/70 hover:text-white transition-all rounded-2xl border border-white/5 bg-white/3 hover:bg-white/10 uppercase tracking-wider backdrop-blur-md" 
+          data-target={tab.target}
+        >
+          {tab.name}
+        </a>
+      ))}
+    </div>
+
+    <div class="flex flex-col items-center gap-5 w-full max-w-sm mt-auto">
+      <div class="bg-white/5 border border-white/10 px-4 py-2.5 rounded-full flex items-center gap-2.5 text-[#c8d2d2] text-xs font-medium backdrop-blur-md">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+        </span>
+        <span>Disponible para nuevos proyectos</span>
+      </div>
+
+      <Button href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" size="lg" class="mobile-link w-full">Sesión Gratuita</Button>
     </div>
   </div>
 </div>
 
 <script>
-  const menuToggle = document.getElementById("menu-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const menuIcon = document.getElementById("menu-icon");
-  const closeIcon = document.getElementById("close-icon");
-  const mobileLinks = document.querySelectorAll(
-    ".mobile-link, .mobile-nav-link",
-  );
-  const allNavLinks = document.querySelectorAll(".nav-link, .mobile-nav-link");
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-nav-tab');
+  const allNavTabs = document.querySelectorAll('.nav-tab, .mobile-nav-tab');
 
   function toggleMenu() {
-    mobileMenu?.classList.toggle("hidden");
-    menuIcon?.classList.toggle("hidden");
-    closeIcon?.classList.toggle("hidden");
-    document.body.classList.toggle("overflow-hidden");
+    mobileMenu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+    document.body.classList.toggle('overflow-hidden');
   }
 
-  function setActiveLink(targetId: string) {
-    allNavLinks.forEach((link) => {
-      const isMobile = link.classList.contains("mobile-nav-link");
-      const dot = link.querySelector(".nav-dot");
-      link.classList.remove("text-white");
-      link.classList.add(
-        isMobile ? "text-brand-text/60" : "text-brand-text/50",
-      );
-      dot?.classList.add("hidden");
+  menuToggle?.addEventListener('click', toggleMenu);
 
-      if (link.getAttribute("data-target") === targetId) {
-        link.classList.remove("text-brand-text/50", "text-brand-text/60");
-        link.classList.add("text-white");
-        dot?.classList.remove("hidden");
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (!mobileMenu?.classList.contains('hidden')) {
+        toggleMenu();
+      }
+    });
+  });
+
+  function setActiveTab(targetId: string) {
+    allNavTabs.forEach(tab => {
+      const isMobile = tab.classList.contains('mobile-nav-tab');
+      const activeBg = tab.querySelector('.nav-active-bg');
+      
+      if (isMobile) {
+        if (tab.getAttribute('data-target') === targetId) {
+          tab.classList.remove('text-white/70', 'bg-white/3', 'border-white/5');
+          tab.classList.add('text-white', 'bg-white/10', 'border-white/20');
+        } else {
+          tab.classList.remove('text-white', 'bg-white/10', 'border-white/20');
+          tab.classList.add('text-white/70', 'bg-white/3', 'border-white/5');
+        }
+      } else {
+        if (tab.getAttribute('data-target') === targetId) {
+          tab.classList.remove('text-[#c8c8d7]');
+          tab.classList.add('text-white', 'font-semibold');
+          if (activeBg) activeBg.classList.remove('opacity-0');
+        } else {
+          tab.classList.remove('text-white', 'font-semibold');
+          tab.classList.add('text-[#c8c8d7]');
+          if (activeBg) activeBg.classList.add('opacity-0');
+        }
       }
     });
   }
 
-  menuToggle?.addEventListener("click", toggleMenu);
-  mobileLinks.forEach((link) =>
-    link.addEventListener(
-      "click",
-      () => !mobileMenu?.classList.contains("hidden") && toggleMenu(),
-    ),
-  );
+  const sections = document.querySelectorAll('section[id]');
+  
+  const checkBottom = () => {
+    return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
+  };
 
-  const sections = document.querySelectorAll("section[id]");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(
-        (entry) => entry.isIntersecting && setActiveLink(entry.target.id),
-      );
-      if (window.scrollY < 100) setActiveLink("hero");
-    },
-    { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
-  );
+  const observer = new IntersectionObserver((entries) => {
+    if (checkBottom()) {
+      setActiveTab('faq');
+      return;
+    }
 
-  sections.forEach((section) => observer.observe(section));
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setActiveTab(entry.target.id);
+      }
+    });
+    if (window.scrollY < 100) {
+      setActiveTab('workflow');
+    }
+  }, {
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(sec => observer.observe(sec));
+
+  window.addEventListener('scroll', () => {
+    if (checkBottom()) {
+      setActiveTab('faq');
+    }
+  }, { passive: true });
 </script>

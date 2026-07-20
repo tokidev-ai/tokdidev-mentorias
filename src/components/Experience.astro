@@ -1,44 +1,19 @@
 ---
 import ExperienceCard from "./ExperienceCard.astro";
-
-const experiences = [
-  {
-    company: "Software real",
-    role: "Senior Engineer",
-    period: "10+ anos",
-    description: "Experiencia construyendo productos, arquitecturas escalables y equipos que necesitan entregar con calidad.",
-    color: "#ef6c4a",
-    isCurrent: true,
-  },
-  {
-    company: "Mentoria",
-    role: "Technical Coach",
-    period: "1:1",
-    description: "Acompanamiento directo para developers que quieren mejorar codigo, criterio, comunicacion y confianza.",
-    color: "#f5a623",
-  },
-  {
-    company: "Comunidad",
-    role: "Speaker & Lead",
-    period: "LATAM",
-    description: "Participacion en comunidades tech, charlas y espacios de aprendizaje para developers en crecimiento.",
-    color: "#7b5ea7",
-  },
-];
+import { experiencesList } from "../data/experience";
 ---
 
-<section id="experience" class="py-12 md:py-20 flex justify-center">
-  <div class="w-full flex flex-col items-center">
-    <div class="w-full flex flex-col items-start lg:items-end mb-12 md:mb-16" data-section-label>
-      <div class="flex items-center gap-2 mb-2">
-        <div class="h-px w-10 bg-gradient-to-r from-[#DA2984] to-transparent"></div>
-        <span class="font-mono font-medium text-[#DA2984] text-sm tracking-[2.88px] uppercase">TRAYECTORIA</span>
-      </div>
-      <h2 class="text-[32px] md:text-[38px] font-bold tracking-[-0.76px] text-white/80">Experiencia aplicada a tu contexto.</h2>
-    </div>
+<section id="experience" class="py-16 lg:py-24 w-full flex flex-col items-center">
+  <div class="w-full flex flex-col gap-2.5 items-start mb-12">
+    <p class="font-mono font-medium text-xs tracking-[0.6px] bg-clip-text text-transparent bg-gradient-to-r from-[#DA2984] to-[#A406E9] uppercase">
+      06 — EXPERIENCIA
+    </p>
+    <h2 class="font-bold text-3xl sm:text-4xl lg:text-[40px] text-white tracking-tight">
+      Experiencia aplicada a tu contexto.
+    </h2>
+  </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-      {experiences.map((exp) => <ExperienceCard {...exp} />)}
-    </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
+    {experiencesList.map((exp) => <ExperienceCard {...exp} />)}
   </div>
 </section>

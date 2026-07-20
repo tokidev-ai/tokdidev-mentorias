@@ -15,14 +15,17 @@ const items = [
 ];
 ---
 
-<section id="community" class="py-20 flex justify-center">
-  <div class="w-full flex flex-col items-end">
-    <div class="w-full flex items-center justify-end gap-2 mb-10" data-section-label>
-      <div class="h-px w-10 bg-linear-to-r from-brand-orange to-transparent"></div>
-      <span class="font-mono font-medium text-[#ff8a5c] text-sm tracking-[2.88px] uppercase">ACOMPANAMIENTO</span>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
-      {items.map((item) => <CommunityCard {...item} />)}
-    </div>
+<section id="community" class="py-16 lg:py-24 w-full flex flex-col items-center">
+  <div class="w-full flex flex-col gap-2.5 items-start mb-10">
+    <p class="font-mono font-medium text-xs tracking-[0.6px] bg-clip-text text-transparent bg-gradient-to-r from-[#DA2984] to-[#A406E9] uppercase">
+      ACOMPANAMIENTO
+    </p>
+    <h2 class="font-bold text-3xl sm:text-4xl text-white tracking-tight">
+      Acompañamiento y comunidad.
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+    {items.map((item) => <CommunityCard {...item} />)}
   </div>
 </section>

@@ -1,78 +1,53 @@
 ---
 import { ArrowDown, ArrowRight, CalendarRange, Milestone, Video } from "lucide-astro";
+import { workflowSteps } from "../data/workflow";
 
-const steps = [
-  {
-    icon: CalendarRange,
-    stepNum: "01",
-    title: "Diagnóstico previo",
-    description: "Eliges tu hora en Calendly y detallas tu stack o el bloqueador de tu startup en un formulario rápido.",
-    color: "#ff6b35",
-    bgColor: "rgba(255,107,53,0.12)",
-    borderColor: "rgba(255,107,53,0.25)"
-  },
-  {
-    icon: Video,
-    stepNum: "02",
-    title: "Sesión 1-a-1",
-    description: "Nos conectamos a revisar arquitectura, refactorización o la estrategia de integración de IA sin rodeos.",
-    color: "#a406e9",
-    bgColor: "rgba(164,6,233,0.12)",
-    borderColor: "rgba(164,6,233,0.25)"
-  },
-  {
-    icon: Milestone,
-    stepNum: "03",
-    title: "Plan de Acción",
-    description: "Te llevas una hoja de ruta clara, código limpio y los siguientes pasos listos para ejecutar.",
-    color: "#da2984",
-    bgColor: "rgba(218,41,132,0.12)",
-    borderColor: "rgba(218,41,132,0.25)"
-  }
-];
+const iconMap = {
+  CalendarRange,
+  Video,
+  Milestone,
+};
 ---
 
-<section id="workflow" class="py-20 w-full flex flex-col items-center">
-  {/* Título de la sección */}
-  <div class="w-full flex flex-col gap-2 items-center text-center mb-16">
-    <div class="flex gap-2 items-center" data-section-label>
-      <div class="bg-gradient-to-r from-[#DA2984] to-transparent h-px w-10"></div>
-      <p class="font-mono font-medium text-[#DA2984] text-sm tracking-[2.88px] uppercase">METODOLOGÍA</p>
-    </div>
-    <h2 class="font-bold text-3xl md:text-4xl text-white">Así trabajamos: Directo al grano</h2>
+<section id="workflow" class="py-16 lg:py-24 w-full flex flex-col items-center">
+  <div class="w-full flex flex-col gap-2.5 items-start mb-10">
+    <p class="font-mono font-medium text-xs tracking-[0.6px] bg-clip-text text-transparent bg-section-label uppercase">
+      01 — WORKFLOW
+    </p>
+    <h2 class="font-bold text-3xl sm:text-4xl text-white tracking-tight">
+      Así trabajamos: Directo al grano.
+    </h2>
   </div>
 
-  {/* Grid de Pasos */}
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full items-stretch">
-    {steps.map((step, index) => (
-      <div class="reveal-card interactive-card backdrop-blur-md bg-white/4 border border-white/8 relative rounded-3xl p-8 flex flex-col justify-between min-h-[260px] transition-all duration-300 hover:border-white/15 hover:bg-white/6 group">
-        
-        {/* Conectores de flujo flotantes (con sentido y premium) */}
-        {index < steps.length - 1 && (
-          <>
-            {/* Conector horizontal para desktop (Chevron a la derecha) */}
-            <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 left-[calc(100%_-_18px)] w-9 h-9 rounded-full bg-[#0a111a] border border-brand-border/40 items-center justify-center z-20 shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-[#DA2984] group-hover:scale-110 group-hover:border-[#DA2984]/40 transition-all duration-300">
-              <ArrowRight size={16} />
-            </div>
-            {/* Conector vertical para mobile (Chevron hacia abajo) */}
-            <div class="flex md:hidden absolute top-[calc(100%_-_18px)] left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-[#0a111a] border border-brand-border/40 items-center justify-center z-20 shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-[#DA2984]">
-              <ArrowDown size={16} />
-            </div>
-          </>
-        )}
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 w-full items-stretch relative">
+    {workflowSteps.map((step, index) => {
+      const IconComponent = iconMap[step.iconName];
+      return (
+        <div class="bg-white/[0.03] border border-white/[0.08] rounded-[20px] p-7 flex flex-col justify-between gap-6 relative overflow-hidden transition-all duration-300 hover:border-magenta/80 hover:bg-card-hover hover:shadow-xl hover:shadow-purple-950/40 group">
+          {index < workflowSteps.length - 1 && (
+            <>
+              <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 left-[calc(100%_-_18px)] w-9 h-9 rounded-full bg-[#0a111a] border border-brand-border/40 items-center justify-center z-20 shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-magenta group-hover:scale-110 group-hover:border-magenta/40 transition-all duration-300">
+                <ArrowRight size={16} />
+              </div>
+              <div class="flex md:hidden absolute top-[calc(100%_-_18px)] left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-[#0a111a] border border-brand-border/40 items-center justify-center z-20 shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-magenta">
+                <ArrowDown size={16} />
+              </div>
+            </>
+          )}
 
-        <div class="flex items-center justify-between mb-8 z-10">
-          <div class="flex items-center justify-center rounded-2xl w-14 h-14" style={`background-color: ${step.bgColor}; border: 1px solid ${step.borderColor};`}>
-            <step.icon size={26} style={`color: ${step.color};`} />
+          <div class="flex items-center justify-between mb-2 z-10">
+            <div class="w-11 h-11 rounded-[12px] bg-icon-gradient flex items-center justify-center shrink-0 shadow-md shadow-purple-900/30 group-hover:scale-105 transition-transform">
+              <IconComponent size={22} class="text-white" />
+            </div>
+            <span class="font-mono text-3xl font-extrabold opacity-15 text-white tracking-widest">{step.stepNum}</span>
           </div>
-          <span class="font-mono text-3xl font-extrabold opacity-15 text-white tracking-widest">{step.stepNum}</span>
+          
+          <div class="flex flex-col gap-2 z-10">
+            <h3 class="font-semibold text-xl sm:text-2xl text-white tracking-tight group-hover:text-white transition-colors">{step.title}</h3>
+            <p class="text-brand-text-dim text-sm leading-relaxed">{step.description}</p>
+          </div>
         </div>
-        
-        <div class="space-y-3 z-10">
-          <h3 class="font-bold text-xl text-white group-hover:text-[#DA2984] transition-colors">{step.title}</h3>
-          <p class="text-white/60 text-sm leading-relaxed">{step.description}</p>
-        </div>
-      </div>
-    ))}
+      );
+    })}
   </div>
 </section>

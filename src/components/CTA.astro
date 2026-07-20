@@ -1,28 +1,48 @@
 ---
-import { Calendar } from "lucide-astro";
+import { Calendar } from 'lucide-astro';
+import Button from './Button.astro';
 ---
 
-<section id="contact" class="reveal-card relative w-full max-w-5xl mx-auto rounded-3xl border border-[rgba(164,6,233,0.15)] overflow-hidden flex flex-col items-center justify-center p-8 lg:p-16 my-12" style="background-image: linear-gradient(152.4deg, rgb(15, 15, 18) 0%, rgb(26, 18, 48) 38.89%, rgb(42, 14, 85) 70.71%)">
-  <div class="absolute -top-24 -right-24 w-80 h-80 bg-[#DA2984]/15 blur-3xl rounded-full pointer-events-none"></div>
-  <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-brand-purple/15 blur-3xl rounded-full pointer-events-none"></div>
+<div
+  id="contact"
+  class="relative w-full rounded-[24px] lg:rounded-[32px] border border-[#DA2984]/40 overflow-hidden flex flex-col items-center justify-center p-8 lg:p-16 shadow-2xl shadow-purple-950/40 my-12"
+  style="background: linear-gradient(152.4deg, rgba(15, 15, 18, 0.95) 0%, rgba(26, 18, 48, 0.95) 38.89%, rgba(42, 14, 85, 0.95) 70.71%)"
+>
+  <div class="absolute w-96 h-96 bg-brand-purple/20 blur-3xl rounded-full -top-20 -right-20 pointer-events-none"></div>
+  <div class="absolute w-96 h-96 bg-brand-orange/15 blur-3xl rounded-full -bottom-20 -left-20 pointer-events-none"></div>
 
-  <div class="flex flex-col items-center text-center gap-8 z-10 w-full max-w-3xl">
-    <div class="font-bold text-3xl md:text-[44px] leading-tight text-white">
-      <h2>Deja de adivinar el siguiente paso.</h2>
-      <p class="bg-clip-text bg-gradient-to-r from-[#DA2984] to-[#A406E9] text-transparent mt-1">Vamos a construirlo.</p>
+  <div class="flex flex-col items-center text-center gap-6 lg:gap-8 z-10 w-full max-w-3xl">
+    <div class="font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight text-white tracking-tight">
+      <p class="mb-1">Deja de adivinar el siguiente paso.</p>
+      <p class="bg-clip-text text-transparent bg-gradient-to-r from-[#FA743F] via-[#DA2984] to-[#A406E9]">
+        Vamos a construirlo.
+      </p>
     </div>
 
-    <p class="text-[#c6cad0] text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl">
-      Eliges tu hora en un par de clics y empezamos a auditar tu stack, resolver bloqueos de arquitectura o diseñar tu estrategia de IA directamente.
+    <p class="text-[#c6cad0] text-base lg:text-lg leading-relaxed max-w-2xl">
+      Eliges tu hora en un par de clics y empezamos a auditar tu stack, resolver bloqueos de arquitectura o disenar tu estrategia de IA directamente.
     </p>
 
-    <div class="w-full max-w-md flex flex-col gap-4 items-center">
-      <a href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-[#DA2984] to-[#A406E9] flex h-14 items-center justify-center gap-3 px-8 rounded-full shadow-[0px_12px_28px_-4px_rgba(218,41,132,0.35)] text-white text-sm sm:text-base font-bold hover:scale-[1.02] transition-transform cursor-pointer">
-        <Calendar size={18} />
-        Agendar mi sesión en Calendly
-        <span class="ml-1">→</span>
-      </a>
-      <p class="text-[#8c8f9e] text-xs">Respondo en menos de 24h. Sin compromiso, solo conversamos.</p>
+    <div class="pt-2 flex flex-col items-center gap-3">
+      <Button 
+        href="https://calendly.com/tokidev/sesion-gratuita" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        variant="primary" 
+        size="lg"
+        class="px-8 py-4 text-base sm:text-lg shadow-xl shadow-brand-red/30 hover:scale-105 transition-all"
+      >
+        <Calendar size={20} class="mr-1" />
+        <span>Agendar mi sesion en Calendly</span>
+      </Button>
+      
+      <span class="font-mono font-medium text-[11px] text-[#8c8f9e] tracking-[0.22px] uppercase pt-1">
+        CALENDLY ↗
+      </span>
     </div>
+
+    <p class="text-[#8c8f9e] text-sm pt-2">
+      Respondo en menos de 24h. Sin compromiso, solo conversamos.
+    </p>
   </div>
-</section>
+</div>

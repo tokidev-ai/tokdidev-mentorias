@@ -8,21 +8,17 @@ interface Props {
 const { title, description, color } = Astro.props;
 ---
 
-<div class="reveal-card interactive-card relative flex flex-col items-start pb-8 h-[364px] rounded-[20px] border border-brand-border/10 overflow-hidden group transition-all duration-500 hover:scale-[1.02]">
-  <div class="absolute inset-0 bg-linear-to-br from-black/35 to-white/5 backdrop-blur-xl -z-10"></div>
-  <div class="w-full h-[180px] bg-[#100a1c] relative overflow-hidden group-hover:bg-[#120c22] transition-colors">
-    <div class="absolute left-1/2 -translate-x-1/2 top-[-30px] w-full max-w-[300px] h-[200px] rounded-full blur-[80px]" style={`background: ${color}22;`}></div>
-    <div class="absolute left-1/2 -translate-x-1/2 top-10 flex gap-2">
-      <div class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform duration-700">
-        <div class="w-4 h-4 rounded-full" style={`background: ${color}; opacity: 0.6;`}></div>
-      </div>
-      <div class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform duration-700">
-        <div class="w-4 h-4 rounded-full" style={`background: ${color}; opacity: 0.6;`}></div>
-      </div>
-    </div>
+<div class="bg-white/[0.03] border border-white/[0.08] rounded-[20px] p-7 flex flex-col gap-4 relative overflow-hidden transition-all duration-300 hover:border-[#DA2984]/80 hover:bg-[linear-gradient(225deg,rgba(26,20,46,0.95)_13%,rgba(18,14,34,0.95)_86%)] hover:shadow-xl hover:shadow-purple-950/40 group min-h-[280px]">
+  <div class="w-11 h-11 rounded-[12px] bg-gradient-to-r from-[#DA2984] to-[#A406E9] flex items-center justify-center shrink-0 shadow-md shadow-purple-900/30 group-hover:scale-105 transition-transform">
+    <div class="w-4 h-4 rounded-full bg-white/80"></div>
   </div>
-  <div class="pt-6 px-7 flex flex-col gap-3 z-10">
-    <h4 class="text-2xl font-bold tracking-[-0.24px] text-brand-text/95">{title}</h4>
-    <p class="text-[14px] font-medium text-brand-text/40 leading-[1.6]">{description}</p>
+
+  <div class="flex flex-col gap-2">
+    <h4 class="font-semibold text-xl text-white tracking-tight group-hover:text-white transition-colors">
+      {title}
+    </h4>
+    <p class="text-[#a0a0b4] text-sm leading-relaxed">
+      {description}
+    </p>
   </div>
 </div>

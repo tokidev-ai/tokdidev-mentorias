@@ -141,54 +141,41 @@ function initNavbar() {
 // ─── Revelado por Secciones ───────────────────────────────────────────────────
 
 function initSectionReveals() {
-  // 1. Capabilities
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#capabilities h2, #capabilities p:first-of-type'), { y: 20, duration: 0.55 });
+  // 1. Workflow
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#workflow h2, #workflow > div:first-child > p'), { y: 20 });
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#workflow .grid > div'), { y: 36, delay: 0.15, stagger: 0.12 });
+
+  // 2. Capabilities
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#capabilities h2, #capabilities > div:first-child > p'), { y: 20 });
   revealOnScroll(document.querySelectorAll<HTMLElement>('#capabilities .flex-col.lg\\:flex-row > div'), { y: 36, delay: 0.15, stagger: 0.1 });
   revealOnScroll(document.querySelectorAll<HTMLElement>('#capabilities .grid > div'), { y: 32, delay: 0.2, stagger: 0.08 });
 
-  // 2. Proyectos
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#projects h2, #projects p:first-of-type'), { y: 20 });
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#projects .w-full > div'), { y: 44, delay: 0.12, duration: 0.8 });
+  // 3. Particulares (PersonalSection)
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#personal h2, #personal > div:first-child > p'), { y: 20 });
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#personal .grid > div'), { y: 36, delay: 0.15, stagger: 0.12 });
 
-  // 3. Speaking
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#speaking h2, #speaking p:first-of-type'), { y: 20 });
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#speaking-track'), { y: 40, delay: 0.15, duration: 0.75 });
+  // 4. Empresas & Startups (BusinessSection)
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#business h2, #business > div:first-child > p'), { y: 20 });
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#business .grid > div'), { y: 36, delay: 0.15, stagger: 0.12 });
 
-  // 4. Experiencia (Timeline)
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#experience h2, #experience p:first-of-type'), { y: 20, duration: 0.55 });
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#experience .flex.gap-4.sm\\:gap-7'), { y: 36, delay: 0.15, stagger: 0.12 });
-
-  // 5. Comunidad
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#community h2, #community p:first-of-type'), { y: 20 });
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#community .grid > div'), { y: 36, delay: 0.12, stagger: 0.1 });
-
-  // 6. Testimonios
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#testimonials h2, #testimonials p:first-of-type'), { y: 20, duration: 0.6 });
+  // 5. Testimonios
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#testimonials h2, #testimonials > div:first-child > p'), { y: 20, duration: 0.6 });
   revealOnScroll(document.querySelectorAll<HTMLElement>('#testimonials .grid > div'), { y: 36, delay: 0.15, stagger: 0.12 });
 
-  // 7. Mentorías
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#mentorship h2, #mentorship p:first-of-type'), { y: 20 });
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#mentorship .grid > div'), { y: 36, delay: 0.12, stagger: 0.1 });
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#mentorship .w-full.flex-col.gap-6'), { y: 30, delay: 0.2 });
+  // 6. Experiencia
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#experience h2, #experience > div:first-child > p'), { y: 20 });
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#experience .grid > div'), { y: 36, delay: 0.15, stagger: 0.12 });
 
-  // 8. Recursos Gratis
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#resources p:first-of-type, #resources h2, #resources p:nth-of-type(2), #resources .flex-col.items-start.gap-2'), { y: 20, stagger: 0.08 });
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#resources .animate-floating'), { y: 32, delay: 0.2, stagger: 0.08 });
+  // 7. Sobre mi (About)
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#about h2, #about p'), { y: 20 });
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#about img, #about .absolute'), { y: 30, delay: 0.15 });
 
-  // 9. Del Blog (Acceso directo)
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#blog-preview h2, #blog-preview p:first-of-type'), { y: 20 });
-  revealOnScroll(document.querySelectorAll<HTMLElement>('#blog-preview a[href^="/blog/post"]'), { y: 32, delay: 0.15, stagger: 0.12 });
+  // 8. FAQ
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#faq h2, #faq > div:first-child > p'), { y: 20 });
+  revealOnScroll(document.querySelectorAll<HTMLElement>('#faq details'), { y: 32, delay: 0.15, stagger: 0.08 });
 
-  // 10. CTA Final
+  // 9. CTA Final (Contact)
   revealOnScroll(document.querySelectorAll<HTMLElement>('#contact h2, #contact p, #contact a'), { y: 30, stagger: 0.1, duration: 0.75 });
-
-  // Blog índice y vista individual
-  revealOnScroll(document.querySelectorAll<HTMLElement>('.blog-card-element'), { y: 36, stagger: 0.07, duration: 0.6 });
-  revealOnScroll(document.querySelectorAll<HTMLElement>('.article-prose > p, .article-prose > h2, .article-prose > ul'), {
-    y: 20,
-    stagger: 0.05,
-    duration: 0.5,
-  });
 }
 
 // ─── Efectos Hover en Tarjetas Interactivas ───────────────────────────────────

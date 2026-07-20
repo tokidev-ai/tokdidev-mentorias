@@ -1,49 +1,32 @@
 ---
-const technologies = [
-  "Angular",
-  "Node.js",
-  "AI Agents",
-  "LLMs",
-  "Supabase",
-  "TypeScript",
-  "Docker",
-  "GraphQL",
-  "PostgreSQL",
-  "Astro",
-  "Tailwind CSS"
-];
+import technologies from "../data/technologies.json";
 ---
 
-<div class="w-full flex flex-col items-center py-6 my-6">
-  {/* Título superior centrado */}
-  <h2 class="text-center text-[#8c8f9e]/60 text-xs font-mono tracking-[3.2px] uppercase mb-8">
-    Tecnologías que domino y con las que escalaremos tu proyecto
-  </h2>
-
-  {/* Contenedor de la marquesina con desvanecimiento lateral mediante gradiente de máscara */}
-  <div class="relative w-full overflow-hidden border-y border-white/6 py-6 bg-white/2 backdrop-blur-xs select-none [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
-    <div class="animate-marquee flex items-center gap-14 whitespace-nowrap text-[#8c8f9e] text-sm font-mono tracking-wider">
-      <!-- First set -->
-      {technologies.map((tech) => <span class="shrink-0">{tech}</span>)}
-      <!-- Second set for seamless loop -->
-      {technologies.map((tech) => <span class="shrink-0">{tech}</span>)}
-    </div>
+<div
+  class="w-full backdrop-blur-md bg-white/3 border-y border-white/6 overflow-hidden py-6 my-12"
+>
+  <div
+    class="marquee-track flex items-center gap-14 whitespace-nowrap text-[#8c8f9e] text-sm font-mono tracking-wider"
+  >
+    {technologies.map((tech) => <span class="shrink-0">{tech}</span>)}
+    {technologies.map((tech) => <span class="shrink-0">{tech}</span>)}
   </div>
 </div>
 
-<style>
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
+<script>
+  import { animate } from "motion";
 
-  .animate-marquee {
-    display: flex;
-    width: max-content;
-    animation: marquee 25s linear infinite;
+  const track = document.querySelector(".marquee-track");
+
+  if (track) {
+    animate(
+      track,
+      { x: ["0%", "-50%"] },
+      {
+        duration: 30,
+        ease: "linear",
+        repeat: Infinity,
+      },
+    );
   }
-</style>
+</script>

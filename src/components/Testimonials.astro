@@ -1,67 +1,42 @@
 ---
-import { ArrowLeft, ArrowRight } from "lucide-astro";
-
-const testimonials = [
-  {
-    text: "La mentoría me ayudó a dejar de estudiar al azar. En pocas semanas tuve un roadmap claro, mejor estructura de código y más confianza para entrevistas.",
-    author: "Developer Frontend",
-    role: "Mentoreado",
-    initials: "DF",
-    color: "#DA2984",
-  },
-  {
-    text: "El feedback fue directo y accionable. No solo resolvimos bugs: aprendí a explicar decisiones técnicas y a pensar tradeoffs como equipo.",
-    author: "Fullstack Developer",
-    role: "Mentoreado",
-    initials: "FD",
-    color: "#A406E9",
-  },
-  {
-    text: "Llegamos con bloqueos serios en la integración de LLMs y la estructuración del backend. Rodrigo nos ayudó a rediseñar la arquitectura en un fin de semana y a definir un pipeline robusto. Clave para nuestro MVP.",
-    author: "Founder & CTO",
-    role: "AI Startup",
-    initials: "FC",
-    color: "#FA743F",
-  },
-];
+import { testimonials } from "../data/testimonials";
 ---
 
-<section id="testimonials" class="py-20 w-full flex flex-col items-center">
-  {/* Fila de Encabezado */}
-  <div class="w-full flex flex-col lg:flex-row gap-6 lg:gap-12 items-start lg:items-end justify-between mb-16">
-    <div class="flex-1 space-y-3">
-      <div class="flex gap-2 items-center" data-section-label>
-        <div class="bg-gradient-to-r from-[#DA2984] to-transparent h-px w-10"></div>
-        <p class="font-mono font-medium text-[#DA2984] text-sm tracking-[2.88px] uppercase">TESTIMONIOS</p>
-      </div>
-      <h2 class="font-bold text-3xl md:text-4xl text-white">Resultados de mentorías Tokidev</h2>
-    </div>
-    <div class="flex-1 max-w-[500px]">
-      <p class="text-white/60 text-sm sm:text-base leading-relaxed">
-        Feedback de developers que buscaron claridad técnica, mejores hábitos y dirección profesional real.
-      </p>
-    </div>
+<section id="testimonials" class="py-16 lg:py-24 w-full flex flex-col items-center">
+  <div class="w-full flex flex-col gap-2.5 items-start mb-10">
+    <p class="font-mono font-medium text-xs tracking-[0.6px] bg-clip-text text-transparent bg-gradient-to-r from-[#DA2984] to-[#A406E9] uppercase">
+      05 — TESTIMONIOS
+    </p>
+    <h2 class="font-bold text-3xl sm:text-4xl lg:text-[40px] text-white tracking-tight">
+      Resultados de mentorías Tokidev.
+    </h2>
+    <p class="text-[#a0a0b4] text-base sm:text-[17px] leading-relaxed max-w-[640px]">
+      Feedback de developers que buscaron claridad técnica, mejores hábitos y dirección profesional real.
+    </p>
   </div>
 
-  {/* Grid de Pasos (3 Columnas para testimonios compactos) */}
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full items-stretch">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 w-full">
     {testimonials.map((test) => (
-      <div class="reveal-card interactive-card relative rounded-3xl border border-white/8 overflow-hidden flex flex-col justify-between p-6 group transition-all duration-500 hover:scale-[1.01] hover:border-[#DA2984]/20 bg-white/3 backdrop-blur-md">
-        {/* Fondo sutil */}
-        <div class="absolute -top-12 -left-12 w-24 h-24 rounded-full blur-[40px] bg-white/5 group-hover:bg-[#DA2984]/5 transition-colors duration-700"></div>
+      <div class="bg-white/[0.03] border border-white/[0.08] rounded-[20px] p-8 sm:p-9 flex flex-col justify-between gap-5 relative overflow-hidden transition-all duration-300 hover:border-[#DA2984]/80 hover:bg-[linear-gradient(225deg,rgba(26,20,46,0.95)_13%,rgba(18,14,34,0.95)_86%)] hover:shadow-xl hover:shadow-purple-950/40 group shadow-lg shadow-purple-950/10">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#DA2984] to-[#A406E9] text-[56px] font-bold leading-none select-none">
+          "
+        </span>
 
-        <div>
-          <span class="text-3xl font-extrabold leading-none opacity-30 select-none block mb-2" style={`color: ${test.color};`}>“</span>
-          <p class="text-white/70 text-xs sm:text-sm leading-relaxed mb-6 font-medium">{test.text}</p>
-        </div>
+        <p class="text-[#dcdce8] text-base sm:text-[17px] font-medium leading-[27px] flex-1">
+          {test.text}
+        </p>
 
-        <div class="flex items-center gap-3 mt-auto">
-          <div class="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0" style={`background: linear-gradient(135deg, ${test.color}cc, #1a1029); border: 1px solid ${test.color}44;`}>
-            {test.initials}
+        <div class="flex items-center gap-3.5 pt-2">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-r from-[#DA2984] to-[#A406E9] flex items-center justify-center text-white font-bold text-sm shadow-md shadow-purple-900/30 shrink-0">
+            <span>{test.initials}</span>
           </div>
-          <div class="flex flex-col text-left">
-            <span class="text-[12px] font-bold text-white/90 leading-none mb-1">{test.author}</span>
-            <span class="text-[10px] font-medium leading-none text-white/40">{test.role}</span>
+          <div class="flex flex-col gap-0.5">
+            <span class="font-semibold text-[15px] text-white tracking-tight">
+              {test.author}
+            </span>
+            <span class="font-medium text-xs text-[#a0a0b4]">
+              {test.role}
+            </span>
           </div>
         </div>
       </div>
