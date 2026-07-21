@@ -1,0 +1,773 @@
+---
+import { Briefcase, MessageSquare, Bot, Check, ChevronRight, ChevronLeft, ChevronDown } from "lucide-astro";
+import SuccessModal from "./SuccessModal.astro";
+
+const countryCodes = [
+  { code: "+591", country: "Bolivia", flag: "🇧🇴" },
+  { code: "+52", country: "México", flag: "🇲🇽" },
+  { code: "+57", country: "Colombia", flag: "🇨🇴" },
+  { code: "+51", country: "Perú", flag: "🇵🇪" },
+  { code: "+54", country: "Argentina", flag: "🇦🇷" },
+  { code: "+56", country: "Chile", flag: "🇨🇱" },
+  { code: "+34", country: "España", flag: "🇪🇸" },
+  { code: "+1", country: "Estados Unidos", flag: "🇺🇸" },
+  { code: "+55", country: "Brasil", flag: "🇧🇷" },
+  { code: "+593", country: "Ecuador", flag: "🇪🇨" },
+  { code: "+595", country: "Paraguay", flag: "🇵🇾" },
+  { code: "+598", country: "Uruguay", flag: "🇺🇾" },
+];
+
+const experienceLevels = [
+  { value: "0-1", label: "0 a 1 año" },
+  { value: "1-2", label: "1 a 2 años" },
+  { value: "2-3", label: "2 a 3 años" },
+  { value: "3-5", label: "3 a 5 años" },
+  { value: "5+", label: "Más de 5 años" },
+];
+
+const experienceAreas = [
+  { value: "frontend", label: "Frontend" },
+  { value: "backend", label: "Backend" },
+  { value: "fullstack", label: "Fullstack" },
+  { value: "mobile", label: "Mobile" },
+  { value: "devops", label: "DevOps" },
+  { value: "data-ml", label: "Data / ML" },
+  { value: "qa", label: "QA / Testing" },
+  { value: "design", label: "Diseño UX/UI" },
+  { value: "other", label: "Otro" },
+];
+
+const mentorshipTypes = [
+  {
+    id: "cv-linkedin",
+    icon: Briefcase,
+    title: "CV & LinkedIn",
+    description: "Optimiza tu perfil profesional para destacar",
+  },
+  {
+    id: "entrevistas",
+    icon: MessageSquare,
+    title: "Entrevistas técnicas",
+    description: "Prepárate para entrevistas con simulacros reales",
+  },
+  {
+    id: "ia",
+    icon: Bot,
+    title: "IA & Automatización",
+    description: "Integra IA en tu flujo de trabajo y proyectos",
+  },
+];
+---
+
+<div class="bg-white/[0.03] border border-white/[0.08] rounded-[24px] p-6 sm:p-8 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-[#100a1c]/40 to-[#0f0a1a]/60 backdrop-blur-xl -z-10"></div>
+
+  <div class="relative z-10">
+    <div id="progress-bar" class="flex items-center justify-center gap-2 mb-8">
+      <div class="flex items-center gap-2">
+        <div id="step-dot-1" class="w-8 h-8 rounded-full bg-gradient-to-r from-[#DA2984] to-[#A406E9] flex items-center justify-center text-white text-xs font-bold transition-all duration-300">1</div>
+        <div id="step-line-1" class="w-12 h-[2px] bg-white/10 transition-all duration-300"></div>
+        <div id="step-dot-2" class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/50 text-xs font-bold transition-all duration-300">2</div>
+        <div id="step-line-2" class="w-12 h-[2px] bg-white/10 transition-all duration-300"></div>
+        <div id="step-dot-3" class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/50 text-xs font-bold transition-all duration-300">3</div>
+      </div>
+    </div>
+
+    <div id="step-label" class="text-center mb-6">
+      <h3 id="step-title" class="text-lg font-semibold text-white">Sobre ti</h3>
+    </div>
+
+    <form id="registration-form" class="space-y-5" novalidate>
+      <div id="step-1" class="step-content space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex flex-col gap-2">
+            <label for="nombre" class="text-sm font-medium text-white/80">Nombre <span class="text-[#DA2984]">*</span></label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              required
+              inputmode="text"
+              pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+              placeholder="Rodri"
+              class="form-input bg-white/[0.05] border border-white/[0.12] rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#DA2984]/60 focus:bg-white/[0.08] transition-all"
+            />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="apellido" class="text-sm font-medium text-white/80">Apellido <span class="text-[#DA2984]">*</span></label>
+            <input
+              type="text"
+              id="apellido"
+              name="apellido"
+              required
+              inputmode="text"
+              pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+              placeholder="Torrico"
+              class="form-input bg-white/[0.05] border border-white/[0.12] rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#DA2984]/60 focus:bg-white/[0.08] transition-all"
+            />
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="celular" class="text-sm font-medium text-white/80">Celular <span class="text-[#DA2984]">*</span></label>
+          <div class="flex gap-2">
+            <div class="relative w-[110px] sm:w-[140px] shrink-0">
+              <select
+                id="codigo-pais"
+                name="codigo-pais"
+                class="form-input bg-white/[0.05] border border-white/[0.12] rounded-xl px-3 py-3 text-sm text-white focus:outline-none focus:border-[#DA2984]/60 focus:bg-white/[0.08] transition-all w-full appearance-none pr-9"
+              >
+                {countryCodes.map((c) => (
+                  <option value={c.code} class="bg-[#1a1029] text-white">
+                    {c.flag} {c.code}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown size={16} class="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none" />
+            </div>
+            <input
+              type="tel"
+              id="celular"
+              name="celular"
+              required
+              inputmode="numeric"
+              pattern="[0-9]+"
+              minlength={7}
+              maxlength={15}
+              placeholder="Tu número de celular"
+              class="form-input bg-white/[0.05] border border-white/[0.12] rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#DA2984]/60 focus:bg-white/[0.08] transition-all flex-1"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div id="step-2" class="step-content space-y-5 hidden">
+        <div class="flex flex-col gap-2">
+          <label for="experiencia" class="text-sm font-medium text-white/80">Años de experiencia <span class="text-[#DA2984]">*</span></label>
+          <div class="relative">
+            <select
+              id="experiencia"
+              name="experiencia"
+              required
+              class="form-input bg-white/[0.05] border border-white/[0.12] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#DA2984]/60 focus:bg-white/[0.08] transition-all w-full appearance-none pr-9"
+            >
+              <option value="" disabled selected class="bg-[#1a1029] text-white/30">Selecciona tu experiencia</option>
+              {experienceLevels.map((level) => (
+                <option value={level.value} class="bg-[#1a1029] text-white">{level.label}</option>
+              ))}
+            </select>
+            <ChevronDown size={16} class="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none" />
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="area" class="text-sm font-medium text-white/80">Área de experiencia <span class="text-[#DA2984]">*</span></label>
+          <div class="relative">
+            <select
+              id="area"
+              name="area"
+              required
+              class="form-input bg-white/[0.05] border border-white/[0.12] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#DA2984]/60 focus:bg-white/[0.08] transition-all w-full appearance-none pr-9"
+            >
+              <option value="" disabled selected class="bg-[#1a1029] text-white/30">Selecciona tu área</option>
+              {experienceAreas.map((area) => (
+                <option value={area.value} class="bg-[#1a1029] text-white">{area.label}</option>
+              ))}
+            </select>
+            <ChevronDown size={16} class="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none" />
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="problema" class="text-sm font-medium text-white/80">¿Qué te está frenando profesionalmente? <span class="text-[#DA2984]">*</span></label>
+          <textarea
+            id="problema"
+            name="problema"
+            required
+            rows={4}
+            placeholder="Describe brevemente el desafío o bloqueo que estás enfrentando en tu crecimiento profesional..."
+            class="form-input bg-white/[0.05] border border-white/[0.12] rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#DA2984]/60 focus:bg-white/[0.08] transition-all resize-none"
+          ></textarea>
+        </div>
+      </div>
+
+      <div id="step-3" class="step-content space-y-5 hidden">
+        <div class="flex flex-col gap-3">
+          <label class="text-sm font-medium text-white/80">¿Qué tipo de mentoría buscas? <span class="text-[#DA2984]">*</span></label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="mentorship-cards">
+            {mentorshipTypes.map((type) => (
+              <button
+                type="button"
+                data-mentorship={type.id}
+                aria-pressed="false"
+                class="mentorship-card group flex flex-col items-center gap-3 p-5 rounded-2xl border border-white/[0.08] bg-white/[0.03] hover:border-[#DA2984]/40 hover:bg-white/[0.06] transition-all duration-300 text-center cursor-pointer"
+              >
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-[#DA2984]/20 to-[#A406E9]/20 border border-white/10 flex items-center justify-center group-hover:from-[#DA2984]/40 group-hover:to-[#A406E9]/40 transition-all">
+                  <type.icon size={22} class="text-white/70 group-hover:text-white transition-colors" />
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-white mb-1">{type.title}</h4>
+                  <p class="text-xs text-white/50 leading-relaxed">{type.description}</p>
+                </div>
+              </button>
+            ))}
+          </div>
+          <input type="hidden" id="mentorship-type" name="mentorship-type" required />
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label id="inversion-label-text" class="text-sm font-medium text-white/80">¿Estás dispuesto a invertir en tu carrera profesional? <span class="text-[#DA2984]">*</span></label>
+          <div class="flex items-center gap-4 p-4 bg-white/[0.03] border border-white/[0.08] rounded-xl">
+            <button
+              type="button"
+              id="inversion-toggle"
+              role="switch"
+              aria-checked="false"
+              aria-labelledby="inversion-label-text"
+              class="relative w-12 h-6 rounded-full bg-white/10 border border-white/20 transition-all duration-300 cursor-pointer shrink-0"
+            >
+              <span id="toggle-knob" class="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white/60 transition-all duration-300"></span>
+            </button>
+            <span id="inversion-label" class="text-sm text-white/60 transition-colors">No</span>
+            <input type="hidden" id="inversion" name="inversion" value="no" />
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="preguntas" class="text-sm font-medium text-white/80">¿Preguntas o dudas? <span class="text-white/30 text-xs">(opcional)</span></label>
+          <textarea
+            id="preguntas"
+            name="preguntas"
+            rows={3}
+            placeholder="Escribe cualquier pregunta o comentario adicional..."
+            class="form-input bg-white/[0.05] border border-white/[0.12] rounded-xl px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#DA2984]/60 focus:bg-white/[0.08] transition-all resize-none"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-4">
+        <button
+          type="button"
+          id="btn-prev"
+          class="hidden items-center gap-2 px-5 py-2.5 text-sm font-medium text-white/60 hover:text-white transition-colors cursor-pointer"
+        >
+          <ChevronLeft size={16} />
+          Atrás
+        </button>
+        <div class="flex-1"></div>
+        <button
+          type="button"
+          id="btn-next"
+          class="btn-next items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#DA2984] to-[#A406E9] rounded-xl text-sm font-bold text-white hover:brightness-110 shadow-lg shadow-purple-900/30 transition-all hover:scale-[1.02] cursor-pointer"
+        >
+          Siguiente
+          <ChevronRight size={16} />
+        </button>
+        <button
+          type="submit"
+          id="btn-submit"
+          class="btn-submit items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#DA2984] to-[#A406E9] rounded-xl text-sm font-bold text-white hover:brightness-110 shadow-lg shadow-purple-900/30 transition-all hover:scale-[1.02] cursor-pointer"
+        >
+          <span id="btn-submit-text" class="flex items-center gap-2">
+            <Check size={16} />
+            Enviar registro
+          </span>
+          <span id="btn-submit-loading" class="hidden items-center gap-2">
+            <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Enviando...
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <SuccessModal />
+</div>
+
+<div id="toast-container" class="fixed top-24 lg:top-28 right-4 sm:right-6 z-[100] flex flex-col gap-2 pointer-events-none"></div>
+
+<style is:global>
+  .toast {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: rgba(18, 12, 34, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(218, 41, 132, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    max-width: 340px;
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.5;
+    pointer-events: auto;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .toast.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .toast-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(218, 41, 132, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+</style>
+
+<style>
+  .mentorship-card.is-selected {
+    border-color: rgba(218, 41, 132, 0.8) !important;
+    background-color: rgba(218, 41, 132, 0.1) !important;
+  }
+  .mentorship-card.is-selected:hover {
+    border-color: rgba(218, 41, 132, 0.8) !important;
+    background-color: rgba(218, 41, 132, 0.1) !important;
+  }
+  .mentorship-card.is-error {
+    border-color: rgba(218, 41, 132, 0.4) !important;
+    animation: shake 0.4s ease-in-out;
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+  .form-input.is-error {
+    border-color: rgba(218, 41, 132, 0.6) !important;
+  }
+  select option:checked {
+    background-color: #1a1029 !important;
+  }
+</style>
+
+<script>
+  import { getFirebaseDb } from "../lib/firebase";
+  import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+
+  let currentStep = 1;
+  const totalSteps = 3;
+
+  const stepContents = document.querySelectorAll(".step-content");
+  const stepDots = [
+    document.getElementById("step-dot-1"),
+    document.getElementById("step-dot-2"),
+    document.getElementById("step-dot-3"),
+  ];
+  const stepLines = [
+    document.getElementById("step-line-1"),
+    document.getElementById("step-line-2"),
+  ];
+  const stepLabel = document.getElementById("step-label");
+  const stepTitle = document.getElementById("step-title");
+  const btnPrev = document.getElementById("btn-prev");
+  const btnNext = document.getElementById("btn-next");
+  const btnSubmit = document.getElementById("btn-submit");
+
+  const stepTitles = ["Sobre ti", "Tu perfil", "Tu mentoría"];
+
+  function updateProgress() {
+    stepDots.forEach((dot, i) => {
+      const stepNum = i + 1;
+      if (stepNum < currentStep) {
+        dot.className =
+          "w-8 h-8 rounded-full bg-gradient-to-r from-[#DA2984] to-[#A406E9] flex items-center justify-center text-white text-xs font-bold transition-all duration-300";
+        dot.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+      } else if (stepNum === currentStep) {
+        dot.className =
+          "w-8 h-8 rounded-full bg-gradient-to-r from-[#DA2984] to-[#A406E9] flex items-center justify-center text-white text-xs font-bold transition-all duration-300";
+        dot.textContent = String(stepNum);
+      } else {
+        dot.className =
+          "w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/50 text-xs font-bold transition-all duration-300";
+        dot.textContent = String(stepNum);
+      }
+    });
+
+    stepLines.forEach((line, i) => {
+      if (i + 1 < currentStep) {
+        line.className = "w-12 h-[2px] bg-gradient-to-r from-[#DA2984] to-[#A406E9] transition-all duration-300";
+      } else {
+        line.className = "w-12 h-[2px] bg-white/10 transition-all duration-300";
+      }
+    });
+
+    if (stepTitle) stepTitle.textContent = stepTitles[currentStep - 1];
+
+    stepContents.forEach((content, i) => {
+      const el = content as HTMLElement;
+      if (i + 1 === currentStep) {
+        el.classList.remove("hidden");
+        el.style.opacity = "0";
+        el.style.transform = "translateY(12px)";
+        requestAnimationFrame(() => {
+          el.style.transition = "opacity 0.35s ease, transform 0.35s ease";
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0)";
+        });
+      } else {
+        el.classList.add("hidden");
+      }
+    });
+
+    if (currentStep === 1) {
+      if (btnPrev) btnPrev.style.display = "none";
+      if (btnNext) btnNext.style.display = "flex";
+      if (btnSubmit) btnSubmit.style.display = "none";
+    } else if (currentStep === totalSteps) {
+      if (btnPrev) btnPrev.style.display = "flex";
+      if (btnNext) btnNext.style.display = "none";
+      if (btnSubmit) btnSubmit.style.display = "flex";
+    } else {
+      if (btnPrev) btnPrev.style.display = "flex";
+      if (btnNext) btnNext.style.display = "flex";
+      if (btnSubmit) btnSubmit.style.display = "none";
+    }
+  }
+
+  function clearError(input: HTMLElement) {
+    input.classList.remove("is-error");
+  }
+
+  const errorMessages: Record<string, string> = {
+    nombre: "Por favor, ingresa tu nombre.",
+    apellido: "Por favor, ingresa tu apellido.",
+    celular: "Ingresa un número de celular válido (mínimo 7 dígitos).",
+    experiencia: "Selecciona tus años de experiencia.",
+    area: "Selecciona tu área de experiencia.",
+    problema: "Describe el problema que estás enfrentando.",
+    "mentorship-type": "Selecciona un tipo de mentoría.",
+  };
+
+  let toastTimer: ReturnType<typeof setTimeout> | null = null;
+  let toastCount = 0;
+
+  function createToastElement(message: string): HTMLElement {
+    const toast = document.createElement("div");
+    toast.className = "toast";
+
+    const iconWrap = document.createElement("div");
+    iconWrap.className = "toast-icon";
+    const iconSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    iconSvg.setAttribute("width", "12");
+    iconSvg.setAttribute("height", "12");
+    iconSvg.setAttribute("viewBox", "0 0 24 24");
+    iconSvg.setAttribute("fill", "none");
+    iconSvg.setAttribute("stroke", "#DA2984");
+    iconSvg.setAttribute("stroke-width", "2.5");
+    iconSvg.setAttribute("stroke-linecap", "round");
+    iconSvg.setAttribute("stroke-linejoin", "round");
+
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("cx", "12");
+    circle.setAttribute("cy", "12");
+    circle.setAttribute("r", "10");
+    iconSvg.appendChild(circle);
+
+    const line1 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line1.setAttribute("x1", "12");
+    line1.setAttribute("y1", "8");
+    line1.setAttribute("x2", "12");
+    line1.setAttribute("y2", "12");
+    iconSvg.appendChild(line1);
+
+    const line2 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line2.setAttribute("x1", "12");
+    line2.setAttribute("y1", "16");
+    line2.setAttribute("x2", "12.01");
+    line2.setAttribute("y2", "16");
+    iconSvg.appendChild(line2);
+
+    iconWrap.appendChild(iconSvg);
+
+    const text = document.createElement("span");
+    text.textContent = message;
+
+    toast.appendChild(iconWrap);
+    toast.appendChild(text);
+    return toast;
+  }
+
+  function showToast(message: string) {
+    const container = document.getElementById("toast-container");
+    if (!container) return;
+
+    if (toastTimer) {
+      clearTimeout(toastTimer);
+      toastTimer = null;
+    }
+
+    const existing = container.querySelector(".toast") as HTMLElement | null;
+    const hasSameMessage = existing?.querySelector("span")?.textContent === message;
+
+    if (existing && hasSameMessage) {
+      requestAnimationFrame(() => {
+        existing.classList.add("is-visible");
+        toastCount++;
+        existing.style.transform = `translateX(0) scale(${1 + Math.min(toastCount, 3) * 0.02})`;
+        requestAnimationFrame(() => {
+          existing.style.transform = "translateX(0) scale(1)";
+        });
+      });
+      toastTimer = setTimeout(() => {
+        existing.classList.remove("is-visible");
+        toastTimer = setTimeout(() => {
+          existing.remove();
+          toastCount = 0;
+          toastTimer = null;
+        }, 300);
+      }, 3500);
+      return;
+    }
+
+    if (existing) {
+      existing.classList.remove("is-visible");
+      setTimeout(() => existing.remove(), 300);
+    }
+
+    toastCount = 1;
+    const toast = createToastElement(message);
+    container.appendChild(toast);
+
+    requestAnimationFrame(() => {
+      toast.classList.add("is-visible");
+    });
+
+    toastTimer = setTimeout(() => {
+      toast.classList.remove("is-visible");
+      toastTimer = setTimeout(() => {
+        toast.remove();
+        toastCount = 0;
+        toastTimer = null;
+      }, 300);
+    }, 3500);
+  }
+
+  function validateStep(step: number): string {
+    const content = document.getElementById(`step-${step}`);
+    if (!content) return "Error al validar el formulario.";
+
+    const errors: string[] = [];
+
+    const requiredInputs = content.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>("[required]");
+    requiredInputs.forEach((input) => {
+      if (!input.value || input.value.trim() === "") {
+        const name = input.getAttribute("name") || "";
+        if (errorMessages[name]) errors.push(errorMessages[name]);
+        input.classList.add("is-error");
+        input.addEventListener("input", () => clearError(input), { once: true });
+        input.addEventListener("change", () => clearError(input), { once: true });
+      }
+    });
+
+    const celularInput = document.getElementById("celular") as HTMLInputElement;
+    if (step === 1 && celularInput && celularInput.value) {
+      const digits = celularInput.value.replace(/\D/g, "");
+      if (digits.length < 7) {
+        errors.push(errorMessages["celular"]);
+        celularInput.classList.add("is-error");
+        celularInput.addEventListener("input", () => clearError(celularInput), { once: true });
+      }
+    }
+
+    if (step === 3) {
+      const mentorshipInput = document.getElementById("mentorship-type") as HTMLInputElement;
+      if (!mentorshipInput.value) {
+        errors.push(errorMessages["mentorship-type"]);
+        document.querySelectorAll(".mentorship-card").forEach((card) => {
+          card.classList.add("is-error");
+        });
+      }
+    }
+
+    return errors[0] || "";
+  }
+
+  btnNext?.addEventListener("click", () => {
+    const error = validateStep(currentStep);
+    if (!error && currentStep < totalSteps) {
+      currentStep++;
+      updateProgress();
+    } else if (error) {
+      showToast(error);
+    }
+  });
+
+  btnPrev?.addEventListener("click", () => {
+    if (currentStep > 1) {
+      currentStep--;
+      updateProgress();
+    }
+  });
+
+  const mentorshipCards = document.querySelectorAll(".mentorship-card");
+  const mentorshipInput = document.getElementById("mentorship-type") as HTMLInputElement;
+
+  mentorshipCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      mentorshipCards.forEach((c) => {
+        c.classList.remove("is-selected");
+        c.setAttribute("aria-pressed", "false");
+      });
+      card.classList.add("is-selected");
+      card.setAttribute("aria-pressed", "true");
+      mentorshipInput.value = card.getAttribute("data-mentorship") || "";
+      document.querySelectorAll(".mentorship-card").forEach((c) => c.classList.remove("is-error"));
+    });
+  });
+
+  const toggleBtn = document.getElementById("inversion-toggle") as HTMLButtonElement | null;
+  const toggleKnob = document.getElementById("toggle-knob");
+  const inversionLabel = document.getElementById("inversion-label");
+  const inversionInput = document.getElementById("inversion") as HTMLInputElement;
+  let toggleState = false;
+
+  toggleBtn?.addEventListener("click", () => {
+    toggleState = !toggleState;
+    if (toggleState) {
+      toggleBtn.classList.remove("bg-white/10", "border-white/20");
+      toggleBtn.classList.add("bg-gradient-to-r", "from-[#DA2984]", "to-[#A406E9]", "border-transparent");
+      if (toggleKnob) toggleKnob.style.transform = "translateX(24px)";
+      toggleKnob?.classList.remove("bg-white/60");
+      toggleKnob?.classList.add("bg-white");
+      if (inversionLabel) {
+        inversionLabel.textContent = "Sí";
+        inversionLabel.classList.remove("text-white/60");
+        inversionLabel.classList.add("text-white");
+      }
+      if (inversionInput) inversionInput.value = "si";
+      toggleBtn.setAttribute("aria-checked", "true");
+    } else {
+      toggleBtn.classList.add("bg-white/10", "border-white/20");
+      toggleBtn.classList.remove("bg-gradient-to-r", "from-[#DA2984]", "to-[#A406E9]", "border-transparent");
+      if (toggleKnob) toggleKnob.style.transform = "translateX(0)";
+      toggleKnob?.classList.add("bg-white/60");
+      toggleKnob?.classList.remove("bg-white");
+      if (inversionLabel) {
+        inversionLabel.textContent = "No";
+        inversionLabel.classList.add("text-white/60");
+        inversionLabel.classList.remove("text-white");
+      }
+      if (inversionInput) inversionInput.value = "no";
+      toggleBtn.setAttribute("aria-checked", "false");
+    }
+  });
+
+  const celularInput = document.getElementById("celular") as HTMLInputElement;
+  celularInput?.addEventListener("input", (e) => {
+    const input = e.target as HTMLInputElement;
+    input.value = input.value.replace(/[^0-9]/g, "");
+  });
+
+  const nombreInput = document.getElementById("nombre") as HTMLInputElement;
+  nombreInput?.addEventListener("input", (e) => {
+    const input = e.target as HTMLInputElement;
+    input.value = input.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, "");
+  });
+
+  const apellidoInput = document.getElementById("apellido") as HTMLInputElement;
+  apellidoInput?.addEventListener("input", (e) => {
+    const input = e.target as HTMLInputElement;
+    input.value = input.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ\s]/g, "");
+  });
+
+  const form = document.getElementById("registration-form");
+  const modal = document.getElementById("success-modal");
+  const btnSubmitText = document.getElementById("btn-submit-text");
+  const btnSubmitLoading = document.getElementById("btn-submit-loading");
+
+  function setSubmitLoading(isLoading: boolean) {
+    if (!btnSubmit) return;
+    
+    if (isLoading) {
+      btnSubmit.disabled = true;
+      btnSubmit.classList.add("opacity-60", "cursor-not-allowed");
+      btnSubmitText?.classList.add("hidden");
+      btnSubmitLoading?.classList.remove("hidden");
+      btnSubmitLoading?.classList.add("flex");
+    } else {
+      btnSubmit.disabled = false;
+      btnSubmit.classList.remove("opacity-60", "cursor-not-allowed");
+      btnSubmitText?.classList.remove("hidden");
+      btnSubmitText?.classList.add("flex");
+      btnSubmitLoading?.classList.add("hidden");
+      btnSubmitLoading?.classList.remove("flex");
+    }
+  }
+
+  function collectFormData() {
+    const nombre = (document.getElementById("nombre") as HTMLInputElement)?.value || "";
+    const apellido = (document.getElementById("apellido") as HTMLInputElement)?.value || "";
+    const codigoPais = (document.getElementById("codigo-pais") as HTMLSelectElement)?.value || "";
+    const celular = (document.getElementById("celular") as HTMLInputElement)?.value || "";
+    const experiencia = (document.getElementById("experiencia") as HTMLSelectElement)?.value || "";
+    const area = (document.getElementById("area") as HTMLSelectElement)?.value || "";
+    const problema = (document.getElementById("problema") as HTMLTextAreaElement)?.value || "";
+    const tipoMentoria = (document.getElementById("mentorship-type") as HTMLInputElement)?.value || "";
+    const dispuestoInvertir = (document.getElementById("inversion") as HTMLInputElement)?.value || "no";
+    const preguntasDudas = (document.getElementById("preguntas") as HTMLTextAreaElement)?.value || "";
+
+    return {
+      nombre,
+      apellido,
+      codigoPais,
+      celular,
+      experiencia,
+      area,
+      problema,
+      tipoMentoria,
+      dispuestoInvertir,
+      preguntasDudas: preguntasDudas.trim() || null,
+      createdAt: serverTimestamp(),
+      status: "pendiente",
+    };
+  }
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const error = validateStep(currentStep);
+    if (error) {
+      showToast(error);
+      return;
+    }
+
+    setSubmitLoading(true);
+
+    try {
+      const db = getFirebaseDb();
+      if (!db) {
+        throw new Error("Firebase no está disponible");
+      }
+
+      const data = collectFormData();
+      await addDoc(collection(db, "mentorship_registrations"), data);
+
+      if (modal) {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        requestAnimationFrame(() => {
+          modal.style.opacity = "1";
+        });
+        document.body.style.overflow = "hidden";
+      }
+    } catch (err) {
+      console.error("Error al enviar registro:", err);
+      showToast("No se pudo enviar tu registro. Intenta de nuevo.");
+    } finally {
+      setSubmitLoading(false);
+    }
+  });
+
+  updateProgress();
+</script>

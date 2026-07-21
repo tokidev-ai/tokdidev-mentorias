@@ -1,0 +1,64 @@
+---
+import { Check, X } from "lucide-astro";
+---
+
+<div 
+  id="success-modal" 
+  class="hidden fixed inset-0 z-50 items-center justify-center p-4"
+  style="opacity: 0; transition: opacity 0.3s ease;"
+>
+  <div class="absolute inset-0 bg-brand-bg/80 backdrop-blur-md" id="modal-overlay"></div>
+  
+  <div class="relative bg-white/[0.03] border border-white/[0.08] rounded-[24px] p-8 sm:p-10 max-w-[420px] w-full text-center shadow-2xl shadow-purple-950/50">
+    <button 
+      id="modal-close-x"
+      class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
+    >
+      <X size={16} />
+    </button>
+
+    <div class="w-16 h-16 rounded-full bg-gradient-to-r from-[#DA2984] to-[#A406E9] flex items-center justify-center mx-auto mb-6 shadow-lg shadow-purple-900/40">
+      <Check size={32} class="text-white" stroke-width={3} />
+    </div>
+
+    <h3 class="text-2xl font-bold text-white mb-3">
+      ¡Registro exitoso!
+    </h3>
+
+    <p class="text-[#a0a0b4] text-sm leading-relaxed mb-8">
+      Tu información fue enviada correctamente. Nos pondremos en contacto contigo pronto para coordinar tu mentoría.
+    </p>
+
+    <a 
+      href="/" 
+      class="inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-gradient-to-r from-[#DA2984] to-[#A406E9] rounded-xl text-sm font-bold text-white hover:brightness-110 shadow-lg shadow-purple-900/30 transition-all hover:scale-[1.02] cursor-pointer"
+    >
+      Volver al inicio
+    </a>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("success-modal");
+  const overlay = document.getElementById("modal-overlay");
+  const closeX = document.getElementById("modal-close-x");
+
+  function closeModal() {
+    if (modal) {
+      modal.style.opacity = "0";
+      document.body.style.overflow = "";
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }, 300);
+    }
+  }
+
+  overlay?.addEventListener("click", closeModal);
+  closeX?.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+</script>

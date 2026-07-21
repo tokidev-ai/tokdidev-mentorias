@@ -16,18 +16,18 @@ const navTabs = [
   class="fixed top-4 lg:top-6 left-1/2 -translate-x-1/2 w-[94%] max-w-[1240px] h-16 flex items-center justify-between z-50 px-4 lg:px-6 rounded-full border border-transparent"
 >
   <a href="/" class="flex items-center gap-3 shrink-0 group transition-opacity hover:opacity-90">
-    <div class="h-9 w-auto flex items-center justify-center">
+    <div class="h-6 w-auto flex items-center justify-center">
       <img 
         src="/assets/logos/logoTokidev.svg" 
         alt="Tokidev Logo" 
-        class="h-9 w-auto object-contain" 
+        class="h-6 w-auto object-contain" 
         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
       />
       <div class="hidden items-center gap-2">
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-r from-brand-red to-brand-orange flex items-center justify-center shadow-md shadow-brand-red/30">
-          <span class="text-white font-bold text-lg leading-none">T</span>
+        <div class="w-6 h-6 rounded-lg bg-gradient-to-r from-brand-red to-brand-orange flex items-center justify-center shadow-md shadow-brand-red/30">
+          <span class="text-white font-bold text-sm leading-none">T</span>
         </div>
-        <span class="text-white font-extrabold text-xl tracking-tight">tokidev</span>
+        <span class="text-white font-extrabold text-lg tracking-tight">tokidev</span>
       </div>
     </div>
     <div class="h-4 w-px bg-white/20"></div>
@@ -51,17 +51,6 @@ const navTabs = [
   </div>
 
   <div class="hidden lg:flex items-center gap-4 shrink-0">
-    <div 
-      id="status-pill" 
-      class="px-3.5 py-2 rounded-full flex items-center gap-2.5 text-[#c8d2d2] text-[11px] font-medium tracking-[0.22px] border border-transparent"
-    >
-      <span class="relative flex h-2 w-2">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-      </span>
-      <span>Disponible</span>
-    </div>
-
     <Button href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" size="sm">Sesión Gratuita</Button>
   </div>
 
@@ -86,14 +75,6 @@ const navTabs = [
     </div>
 
     <div class="flex flex-col items-center gap-5 w-full max-w-sm mt-auto">
-      <div class="bg-white/5 border border-white/10 px-4 py-2.5 rounded-full flex items-center gap-2.5 text-[#c8d2d2] text-xs font-medium backdrop-blur-md">
-        <span class="relative flex h-2.5 w-2.5">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-        </span>
-        <span>Disponible para nuevos proyectos</span>
-      </div>
-
       <Button href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" size="lg" class="mobile-link w-full">Sesión Gratuita</Button>
     </div>
   </div>

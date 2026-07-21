@@ -91,7 +91,6 @@ function initNavbar() {
   function updateNavbar() {
     const nav = document.getElementById('main-navbar');
     const navPill = document.getElementById('nav-pill');
-    const statusPill = document.getElementById('status-pill');
     if (!nav) return;
 
     // Se calcula el progreso continuo t (de 0 a 1) en un rango dinámico corto de 120px de scroll
@@ -114,14 +113,6 @@ function initNavbar() {
       navPill.style.borderColor = `rgba(255, 255, 255, ${(0.08 * invT).toFixed(3)})`;
       navPill.style.backdropFilter = invT > 0.05 ? `blur(${(10 * invT).toFixed(1)}px)` : 'none';
       navPill.style.boxShadow = `0 ${(6 * invT).toFixed(1)}px ${(15 * invT).toFixed(1)}px rgba(0, 0, 0, ${(0.1 * invT).toFixed(3)})`;
-    }
-
-    // 3. Interpolación inversa para el indicador de disponibilidad (#status-pill)
-    if (statusPill) {
-      statusPill.style.backgroundColor = `rgba(255, 255, 255, ${(0.05 * invT).toFixed(3)})`;
-      statusPill.style.borderColor = `rgba(255, 255, 255, ${(0.08 * invT).toFixed(3)})`;
-      statusPill.style.backdropFilter = invT > 0.05 ? `blur(${(10 * invT).toFixed(1)}px)` : 'none';
-      statusPill.style.boxShadow = `0 ${(4 * invT).toFixed(1)}px ${(10 * invT).toFixed(1)}px rgba(0, 0, 0, ${(0.08 * invT).toFixed(3)})`;
     }
 
     ticking = false;

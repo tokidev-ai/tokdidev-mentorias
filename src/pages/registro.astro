@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+import RegistrationForm from "../components/RegistrationForm.astro";
+import { ArrowLeft } from "lucide-astro";
+---
+
+<Layout
+  title="Tokidev Mentorías | Registro"
+  description="Regístrate para coordinar tu mentoría técnica 1:1 con Tokidev."
+>
+  <div class="relative w-full mx-auto min-h-screen overflow-x-hidden">
+    <nav class="fixed top-4 lg:top-6 left-1/2 -translate-x-1/2 w-[94%] max-w-[1240px] h-16 flex items-center justify-between z-50 px-4 lg:px-6 rounded-full border border-transparent bg-brand-bg/85 backdrop-blur-xl border-white/[0.12]">
+      <a href="/" class="flex items-center gap-2 shrink-0 group transition-opacity hover:opacity-90">
+        <div class="h-7 w-auto flex items-center justify-center">
+          <img 
+            src="/assets/logos/logoTokidev.svg" 
+            alt="Tokidev Logo" 
+            class="h-7 w-auto object-contain" 
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="hidden items-center gap-2">
+            <div class="w-6 h-6 rounded-lg bg-gradient-to-r from-brand-red to-brand-orange flex items-center justify-center shadow-md shadow-brand-red/30">
+              <span class="text-white font-bold text-sm leading-none">T</span>
+            </div>
+            <span class="text-white font-extrabold text-lg tracking-tight">tokidev</span>
+          </div>
+        </div>
+        <div class="h-3 w-px bg-white/20"></div>
+        <span class="text-[#a0a0b4] text-[9px] lg:text-[10px] font-bold uppercase tracking-[1.5px] leading-none">mentorías</span>
+      </a>
+
+      <a href="/" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors">
+        <ArrowLeft size={16} />
+        <span class="hidden sm:inline">Volver al inicio</span>
+      </a>
+    </nav>
+
+    <main class="relative z-10 pt-28 pb-16 px-4">
+      <div class="w-full max-w-[640px] mx-auto">
+        <div class="text-center mb-10">
+          <h1 class="font-bold text-3xl sm:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#DA2984] to-[#A406E9] tracking-tight mb-3">
+            Coordina tu mentoría.
+          </h1>
+          <p class="text-[#a0a0b4] text-base leading-relaxed max-w-[480px] mx-auto">
+            Completa el formulario y nos pondremos en contacto contigo para agendar tu sesión.
+          </p>
+        </div>
+
+        <RegistrationForm />
+      </div>
+    </main>
+  </div>
+
+  <div class="absolute top-0 left-0 w-full flex justify-center pointer-events-none -z-50">
+    <div class="relative w-[1440px] shrink-0">
+      <div class="absolute top-[100px] left-[592px] w-[674px] h-[650px] bg-[#FA743F]/15 blur-[130px] rounded-full"></div>
+      <div class="absolute top-[600px] left-[-39px] w-[630px] h-[685px] bg-[#A406E9]/10 blur-[120px] rounded-full"></div>
+      <div class="absolute top-[1200px] left-[575px] w-[736px] h-[675px] bg-[#DA2984]/10 blur-[140px] rounded-full"></div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { getFirebaseAnalytics } from "../lib/firebase";
+  getFirebaseAnalytics();
+</script>

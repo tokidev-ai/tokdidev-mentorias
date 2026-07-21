@@ -23,7 +23,7 @@ const iconMap = {
     {workflowSteps.map((step, index) => {
       const IconComponent = iconMap[step.iconName];
       return (
-        <div class="bg-white/[0.03] border border-white/[0.08] rounded-[20px] p-7 flex flex-col justify-between gap-6 relative overflow-hidden transition-all duration-300 hover:border-magenta/80 hover:bg-card-hover hover:shadow-xl hover:shadow-purple-950/40 group">
+        <div class="bg-white/[0.03] border border-white/[0.08] rounded-[20px] p-7 flex flex-col justify-between gap-6 relative transition-all duration-300 hover:border-magenta/80 hover:bg-card-hover hover:shadow-xl hover:shadow-purple-950/40 group">
           {index < workflowSteps.length - 1 && (
             <>
               <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 left-[calc(100%_-_18px)] w-9 h-9 rounded-full bg-[#0a111a] border border-brand-border/40 items-center justify-center z-20 shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-magenta group-hover:scale-110 group-hover:border-magenta/40 transition-all duration-300">
