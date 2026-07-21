@@ -1,167 +1,212 @@
 ---
-import { Menu, X } from 'lucide-astro';
-import Button from './Button.astro';
+import { Menu, X } from "lucide-astro";
+import Button from "./Button.astro";
 
 const navTabs = [
-  { name: 'WORKFLOW', href: '/#workflow', target: 'workflow' },
-  { name: 'PARTICULARES', href: '/#personal', target: 'personal' },
-  { name: 'EMPRESAS', href: '/#business', target: 'business' },
-  { name: 'TESTIMONIOS', href: '/#testimonials', target: 'testimonials' },
-  { name: 'FAQ', href: '/#faq', target: 'faq' },
+  { name: "WORKFLOW", href: "/#workflow", target: "workflow" },
+  { name: "PARTICULARES", href: "/#personal", target: "personal" },
+  { name: "EMPRESAS", href: "/#business", target: "business" },
+  { name: "TESTIMONIOS", href: "/#testimonials", target: "testimonials" },
+  { name: "FAQ", href: "/#faq", target: "faq" },
 ];
 ---
 
-<nav 
-  id="main-navbar" 
+<nav
+  id="main-navbar"
   class="fixed top-4 lg:top-6 left-1/2 -translate-x-1/2 w-[94%] max-w-[1240px] h-16 flex items-center justify-between z-50 px-4 lg:px-6 rounded-full border border-transparent"
 >
-  <a href="/" class="flex items-center gap-3 shrink-0 group transition-opacity hover:opacity-90">
-    <div class="h-6 w-auto flex items-center justify-center">
-      <img 
-        src="/assets/logos/logoTokidev.svg" 
-        alt="Tokidev Logo" 
-        class="h-6 w-auto object-contain" 
+  <a
+    href="/"
+    class="flex items-center gap-3 shrink-0 group transition-opacity hover:opacity-90"
+  >
+    <div class="h-7 w-auto flex items-center justify-center">
+      <img
+        src="/assets/logos/logoTokidev.svg"
+        alt="Tokidev Logo"
+        class="h-7 w-auto object-contain"
         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
       />
       <div class="hidden items-center gap-2">
-        <div class="w-6 h-6 rounded-lg bg-gradient-to-r from-brand-red to-brand-orange flex items-center justify-center shadow-md shadow-brand-red/30">
+        <div
+          class="w-7 h-7 rounded-lg bg-gradient-to-r from-brand-red to-brand-orange flex items-center justify-center shadow-md shadow-brand-red/30"
+        >
           <span class="text-white font-bold text-sm leading-none">T</span>
         </div>
-        <span class="text-white font-extrabold text-lg tracking-tight">tokidev</span>
+        <span class="text-white font-extrabold text-lg tracking-tight"
+          >tokidev</span
+        >
       </div>
     </div>
     <div class="h-4 w-px bg-white/20"></div>
-    <span class="text-[#a0a0b4] text-[10px] lg:text-[11px] font-bold uppercase tracking-[2px] leading-none">mentorías</span>
+    <span
+      class="text-[#a0a0b4] text-[11px] lg:text-[12px] font-bold uppercase tracking-[2px] leading-none"
+      >mentorías</span
+    >
   </a>
 
-  <div 
-    id="nav-pill" 
+  <div
+    id="nav-pill"
     class="hidden lg:flex items-center gap-1 rounded-full p-1.5 border border-transparent"
   >
-    {navTabs.map(tab => (
-      <a 
-        href={tab.href} 
-        class="nav-tab relative flex items-center justify-center px-4 py-2 rounded-full text-[11px] font-medium tracking-[0.44px] text-[#c8c8d7] hover:text-white transition-all duration-300 uppercase" 
-        data-target={tab.target}
-      >
-        <span class="nav-active-bg absolute inset-0 rounded-full bg-gradient-to-r from-[#DA2984] to-[#A406E9] opacity-0 transition-opacity duration-300 -z-10 shadow-sm shadow-purple-500/30"></span>
-        <span class="nav-text relative z-10">{tab.name}</span>
-      </a>
-    ))}
+    {
+      navTabs.map((tab) => (
+        <a
+          href={tab.href}
+          class="nav-tab relative flex items-center justify-center px-4 py-2 rounded-full text-[11px] font-medium tracking-[0.44px] text-[#c8c8d7] hover:text-white transition-all duration-300 uppercase"
+          data-target={tab.target}
+        >
+          <span class="nav-active-bg absolute inset-0 rounded-full bg-gradient-to-r from-[#DA2984] to-[#A406E9] opacity-0 transition-opacity duration-300 -z-10 shadow-sm shadow-purple-500/30" />
+          <span class="nav-text relative z-10">{tab.name}</span>
+        </a>
+      ))
+    }
   </div>
 
   <div class="hidden lg:flex items-center gap-4 shrink-0">
-    <Button href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" size="sm">Sesión Gratuita</Button>
+    <Button
+      href="https://calendly.com/tokidev/sesion-gratuita"
+      target="_blank"
+      rel="noopener noreferrer"
+      size="md">Sesión Gratuita</Button
+    >
   </div>
 
-  <button id="menu-toggle" class="lg:hidden text-white/90 focus:outline-none transition-colors hover:text-brand-orange p-2.5 flex items-center justify-center">
+  <button
+    id="menu-toggle"
+    class="lg:hidden text-white/90 focus:outline-none transition-colors hover:text-brand-orange p-2.5 flex items-center justify-center"
+  >
     <Menu size={22} id="menu-icon" />
     <X size={22} id="close-icon" class="hidden" />
   </button>
 </nav>
 
-<div id="mobile-menu" class="fixed inset-0 bg-brand-bg/98 backdrop-blur-3xl z-45 hidden lg:hidden transition-all duration-300">
-  <div class="flex flex-col items-center justify-between w-full h-full pt-28 pb-12 px-6">
+<div
+  id="mobile-menu"
+  class="fixed inset-0 bg-brand-bg/98 backdrop-blur-3xl z-45 hidden lg:hidden transition-all duration-300"
+>
+  <div
+    class="flex flex-col items-center justify-between w-full h-full pt-28 pb-12 px-6"
+  >
     <div class="flex flex-col items-center gap-3 w-full max-w-sm my-auto">
-      {navTabs.map(tab => (
-        <a 
-          href={tab.href} 
-          class="mobile-nav-tab w-full text-center py-3.5 text-base font-semibold text-white/70 hover:text-white transition-all rounded-2xl border border-white/5 bg-white/3 hover:bg-white/10 uppercase tracking-wider backdrop-blur-md" 
-          data-target={tab.target}
-        >
-          {tab.name}
-        </a>
-      ))}
+      {
+        navTabs.map((tab) => (
+          <a
+            href={tab.href}
+            class="mobile-nav-tab w-full text-center py-3.5 text-base font-semibold text-white/70 hover:text-white transition-all rounded-2xl border border-white/5 bg-white/3 hover:bg-white/10 uppercase tracking-wider backdrop-blur-md"
+            data-target={tab.target}
+          >
+            {tab.name}
+          </a>
+        ))
+      }
     </div>
 
     <div class="flex flex-col items-center gap-5 w-full max-w-sm mt-auto">
-      <Button href="https://calendly.com/tokidev/sesion-gratuita" target="_blank" rel="noopener noreferrer" size="lg" class="mobile-link w-full">Sesión Gratuita</Button>
+      <Button
+        href="https://calendly.com/tokidev/sesion-gratuita"
+        target="_blank"
+        rel="noopener noreferrer"
+        size="lg"
+        class="mobile-link w-full">Sesión Gratuita</Button
+      >
     </div>
   </div>
 </div>
 
 <script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-  const closeIcon = document.getElementById('close-icon');
-  const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-nav-tab');
-  const allNavTabs = document.querySelectorAll('.nav-tab, .mobile-nav-tab');
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+  const mobileLinks = document.querySelectorAll(
+    ".mobile-link, .mobile-nav-tab",
+  );
+  const allNavTabs = document.querySelectorAll(".nav-tab, .mobile-nav-tab");
 
   function toggleMenu() {
-    mobileMenu?.classList.toggle('hidden');
-    menuIcon?.classList.toggle('hidden');
-    closeIcon?.classList.toggle('hidden');
-    document.body.classList.toggle('overflow-hidden');
+    mobileMenu?.classList.toggle("hidden");
+    menuIcon?.classList.toggle("hidden");
+    closeIcon?.classList.toggle("hidden");
+    document.body.classList.toggle("overflow-hidden");
   }
 
-  menuToggle?.addEventListener('click', toggleMenu);
+  menuToggle?.addEventListener("click", toggleMenu);
 
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (!mobileMenu?.classList.contains('hidden')) {
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (!mobileMenu?.classList.contains("hidden")) {
         toggleMenu();
       }
     });
   });
 
   function setActiveTab(targetId: string) {
-    allNavTabs.forEach(tab => {
-      const isMobile = tab.classList.contains('mobile-nav-tab');
-      const activeBg = tab.querySelector('.nav-active-bg');
-      
+    allNavTabs.forEach((tab) => {
+      const isMobile = tab.classList.contains("mobile-nav-tab");
+      const activeBg = tab.querySelector(".nav-active-bg");
+
       if (isMobile) {
-        if (tab.getAttribute('data-target') === targetId) {
-          tab.classList.remove('text-white/70', 'bg-white/3', 'border-white/5');
-          tab.classList.add('text-white', 'bg-white/10', 'border-white/20');
+        if (tab.getAttribute("data-target") === targetId) {
+          tab.classList.remove("text-white/70", "bg-white/3", "border-white/5");
+          tab.classList.add("text-white", "bg-white/10", "border-white/20");
         } else {
-          tab.classList.remove('text-white', 'bg-white/10', 'border-white/20');
-          tab.classList.add('text-white/70', 'bg-white/3', 'border-white/5');
+          tab.classList.remove("text-white", "bg-white/10", "border-white/20");
+          tab.classList.add("text-white/70", "bg-white/3", "border-white/5");
         }
       } else {
-        if (tab.getAttribute('data-target') === targetId) {
-          tab.classList.remove('text-[#c8c8d7]');
-          tab.classList.add('text-white', 'font-semibold');
-          if (activeBg) activeBg.classList.remove('opacity-0');
+        if (tab.getAttribute("data-target") === targetId) {
+          tab.classList.remove("text-[#c8c8d7]");
+          tab.classList.add("text-white", "font-semibold");
+          if (activeBg) activeBg.classList.remove("opacity-0");
         } else {
-          tab.classList.remove('text-white', 'font-semibold');
-          tab.classList.add('text-[#c8c8d7]');
-          if (activeBg) activeBg.classList.add('opacity-0');
+          tab.classList.remove("text-white", "font-semibold");
+          tab.classList.add("text-[#c8c8d7]");
+          if (activeBg) activeBg.classList.add("opacity-0");
         }
       }
     });
   }
 
-  const sections = document.querySelectorAll('section[id]');
-  
+  const sections = document.querySelectorAll("section[id]");
+
   const checkBottom = () => {
-    return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
+    return (
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 80
+    );
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    if (checkBottom()) {
-      setActiveTab('faq');
-      return;
-    }
-
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        setActiveTab(entry.target.id);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (checkBottom()) {
+        setActiveTab("faq");
+        return;
       }
-    });
-    if (window.scrollY < 100) {
-      setActiveTab('workflow');
-    }
-  }, {
-    rootMargin: '-20% 0px -60% 0px',
-    threshold: 0
-  });
 
-  sections.forEach(sec => observer.observe(sec));
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveTab(entry.target.id);
+        }
+      });
+      if (window.scrollY < 100) {
+        setActiveTab("workflow");
+      }
+    },
+    {
+      rootMargin: "-20% 0px -60% 0px",
+      threshold: 0,
+    },
+  );
 
-  window.addEventListener('scroll', () => {
-    if (checkBottom()) {
-      setActiveTab('faq');
-    }
-  }, { passive: true });
+  sections.forEach((sec) => observer.observe(sec));
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (checkBottom()) {
+        setActiveTab("faq");
+      }
+    },
+    { passive: true },
+  );
 </script>

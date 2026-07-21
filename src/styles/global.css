@@ -40,6 +40,8 @@
 @layer base {
   html {
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
   }
   body {
     @apply bg-brand-bg text-brand-text font-inter antialiased;

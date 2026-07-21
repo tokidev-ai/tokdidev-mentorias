@@ -19,33 +19,37 @@ const iconMap = {
     </h2>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 w-full items-stretch relative">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-9 w-full items-stretch relative">
     {workflowSteps.map((step, index) => {
       const IconComponent = iconMap[step.iconName];
       return (
-        <div class="bg-white/[0.03] border border-white/[0.08] rounded-[20px] p-7 flex flex-col justify-between gap-6 relative transition-all duration-300 hover:border-magenta/80 hover:bg-card-hover hover:shadow-xl hover:shadow-purple-950/40 group">
+        <div class="relative group">
+          <div class="bg-white/[0.03] border border-white/[0.08] rounded-[20px] p-7 flex flex-col justify-between gap-6 relative overflow-hidden transition-all duration-300 hover:border-magenta/80 hover:bg-card-hover hover:shadow-xl hover:shadow-purple-950/40 h-full">
+            <div class="absolute -top-[120px] -left-[120px] w-[240px] h-[240px] rounded-full blur-[80px] bg-magenta/5 group-hover:bg-magenta/10 transition-colors duration-700 pointer-events-none"></div>
+
+            <div class="flex items-center justify-between mb-2 z-10">
+              <div class="w-11 h-11 rounded-[12px] bg-icon-gradient flex items-center justify-center shrink-0 shadow-md shadow-purple-900/30 group-hover:scale-105 transition-transform">
+                <IconComponent size={22} class="text-white" />
+              </div>
+              <span class="font-mono text-3xl font-extrabold opacity-15 text-white tracking-widest">{step.stepNum}</span>
+            </div>
+            
+            <div class="flex flex-col gap-2 z-10">
+              <h3 class="font-semibold text-xl sm:text-2xl text-white tracking-tight group-hover:text-white transition-colors">{step.title}</h3>
+              <p class="text-brand-text-dim text-sm leading-relaxed">{step.description}</p>
+            </div>
+          </div>
+
           {index < workflowSteps.length - 1 && (
             <>
-              <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 left-[calc(100%_-_18px)] w-9 h-9 rounded-full bg-[#0a111a] border border-brand-border/40 items-center justify-center z-20 shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-magenta group-hover:scale-110 group-hover:border-magenta/40 transition-all duration-300">
+              <div class="hidden md:flex absolute top-1/2 -translate-y-1/2 left-full w-9 h-9 rounded-full bg-[#0a111a] border border-brand-border/40 items-center justify-center z-20 shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-magenta group-hover:scale-110 group-hover:border-magenta/40 transition-all duration-300">
                 <ArrowRight size={16} />
               </div>
-              <div class="flex md:hidden absolute top-[calc(100%_-_18px)] left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-[#0a111a] border border-brand-border/40 items-center justify-center z-20 shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-magenta">
+              <div class="flex md:hidden absolute top-full left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-[#0a111a] border border-brand-border/40 items-center justify-center z-20 shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-magenta">
                 <ArrowDown size={16} />
               </div>
             </>
           )}
-
-          <div class="flex items-center justify-between mb-2 z-10">
-            <div class="w-11 h-11 rounded-[12px] bg-icon-gradient flex items-center justify-center shrink-0 shadow-md shadow-purple-900/30 group-hover:scale-105 transition-transform">
-              <IconComponent size={22} class="text-white" />
-            </div>
-            <span class="font-mono text-3xl font-extrabold opacity-15 text-white tracking-widest">{step.stepNum}</span>
-          </div>
-          
-          <div class="flex flex-col gap-2 z-10">
-            <h3 class="font-semibold text-xl sm:text-2xl text-white tracking-tight group-hover:text-white transition-colors">{step.title}</h3>
-            <p class="text-brand-text-dim text-sm leading-relaxed">{step.description}</p>
-          </div>
         </div>
       );
     })}
